@@ -1,0 +1,12 @@
+# Brief privado del cliente (no publicar)
+*.pdf
+
+# Sistema operativo / editores
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# Claude Code (configuración local)
+.claude/settings.local.json

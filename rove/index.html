@@ -1,0 +1,2250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="ROVE Project — Construyendo comunidad para transformar ciudades. Plataforma de impacto social liderada por Henry Contreras.">
+<meta name="keywords" content="ROVE Project, Henry Contreras, comunidad, impacto social, sostenibilidad, voluntariado, Tarjeta Verde">
+<meta name="author" content="Henry Contreras">
+<meta property="og:title" content="ROVE Project — Henry Contreras">
+<meta property="og:description" content="Construyendo comunidad para transformar ciudades.">
+<meta property="og:type" content="website">
+<title>ROVE Project — Henry Contreras</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+/* ═══════════════════════════════════════════════
+   DESIGN TOKENS — ROVE Project
+   ═══════════════════════════════════════════════ */
+:root {
+  --green-950: #0D2818;
+  --green-900: #132F1E;
+  --green-800: #1B5E20;
+  --green-700: #2E7D32;
+  --green-600: #388E3C;
+  --green-500: #4CAF50;
+  --green-400: #66BB6A;
+  --green-200: #A5D6A7;
+  --green-100: #C8E6C9;
+  --green-50:  #E8F5E9;
+
+  --sand-50:  #FDF9F3;
+  --sand-100: #F5F0EB;
+  --sand-200: #E8D5B7;
+  --sand-400: #C4915E;
+  --sand-500: #B07D4A;
+  --sand-600: #8B5E3C;
+
+  --copper: #C4915E;
+  --copper-dark: #A6733F;
+
+  --text-primary: #1A1A1A;
+  --text-secondary: #5C4F3A;
+  --text-muted: #8B8075;
+  --white: #FFFFFF;
+  --border: #E0D5C7;
+  --shadow-sm: 0 1px 3px rgba(13,40,24,0.08);
+  --shadow-md: 0 4px 24px rgba(13,40,24,0.10);
+  --shadow-lg: 0 12px 48px rgba(13,40,24,0.12);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
+  --transition-spring: 0.4s cubic-bezier(0.34,1.56,0.64,1);
+
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --nav-height: 72px;
+}
+
+/* ═══════════════════════════════════════════════
+   RESET & BASE
+   ═══════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: var(--nav-height); }
+body {
+  font-family: var(--font-body);
+  color: var(--text-primary);
+  background: var(--sand-50);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; border: none; font-family: inherit; font-size: inherit; }
+input, textarea, select { font-family: inherit; font-size: inherit; }
+ul { list-style: none; }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.section { padding: 100px 0; }
+.section-label {
+  font-size: 13px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 3px; color: var(--green-600); margin-bottom: 16px;
+  display: flex; align-items: center; gap: 10px;
+}
+.section-label::before {
+  content: ''; width: 32px; height: 2px; background: var(--green-600);
+  border-radius: 1px;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 700; line-height: 1.15;
+  color: var(--green-950); margin-bottom: 20px;
+}
+.section-subtitle {
+  font-size: clamp(16px, 2vw, 18px);
+  color: var(--text-secondary); max-width: 640px; line-height: 1.7;
+}
+
+/* ═══════════════════════════════════════════════
+   NAVBAR
+   ═══════════════════════════════════════════════ */
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  height: var(--nav-height);
+  background: rgba(253,249,243,0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  transition: var(--transition);
+}
+.navbar.scrolled { box-shadow: var(--shadow-sm); }
+.navbar .container {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 100%; max-width: 1280px;
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--font-display); font-size: 22px; font-weight: 900;
+  color: var(--green-950); letter-spacing: -0.5px;
+}
+.nav-logo span { color: var(--green-600); font-size: 14px; }
+.nav-logo-icon {
+  width: 40px; height: 40px; background: var(--green-800);
+  border-radius: var(--radius-sm); display: flex; align-items: center;
+  justify-content: center; color: white; font-weight: 900; font-size: 18px;
+}
+.nav-links { display: flex; align-items: center; gap: 32px; }
+.nav-links a {
+  font-size: 14px; font-weight: 500; color: var(--text-secondary);
+  position: relative; padding: 6px 0; transition: var(--transition);
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: 0; left: 0; width: 0;
+  height: 2px; background: var(--green-600); border-radius: 1px;
+  transition: var(--transition);
+}
+.nav-links a:hover, .nav-links a.active { color: var(--green-800); }
+.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+.nav-cta {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--green-800); color: white;
+  padding: 10px 22px; border-radius: 50px;
+  font-size: 14px; font-weight: 600;
+  transition: var(--transition-spring);
+}
+.nav-cta:hover { background: var(--green-700); transform: scale(1.04); }
+.nav-cta i { font-size: 12px; }
+.nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; padding: 8px; }
+.nav-toggle span { width: 24px; height: 2px; background: var(--green-950); border-radius: 1px; transition: var(--transition); }
+.nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+.nav-toggle.active span:nth-child(2) { opacity: 0; }
+.nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+
+/* ═══════════════════════════════════════════════
+   HERO
+   ═══════════════════════════════════════════════ */
+.hero {
+  min-height: 100vh; display: flex; align-items: center;
+  padding-top: var(--nav-height);
+  background: radial-gradient(ellipse 80% 60% at 50% 40%, var(--green-50) 0%, var(--sand-50) 70%);
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; top: -200px; right: -200px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(27,94,32,0.06) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.hero::after {
+  content: ''; position: absolute; bottom: -150px; left: -150px;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(196,145,94,0.08) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.hero .container { position: relative; z-index: 2; }
+.hero-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+  align-items: center;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--white); border: 1px solid var(--border);
+  padding: 8px 18px; border-radius: 50px;
+  font-size: 13px; font-weight: 600; color: var(--green-800);
+  margin-bottom: 28px;
+}
+.hero-badge i { color: var(--green-600); }
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 7vw, 72px);
+  font-weight: 900; line-height: 1.08;
+  color: var(--green-950); margin-bottom: 24px;
+}
+.hero-title em {
+  font-style: italic; color: var(--green-700);
+  position: relative;
+}
+.hero-title em::after {
+  content: ''; position: absolute; bottom: 4px; left: 0; right: 0;
+  height: 8px; background: var(--sand-200); z-index: -1;
+  border-radius: 4px; opacity: 0.5;
+}
+.hero-text {
+  font-size: 18px; color: var(--text-secondary);
+  line-height: 1.7; margin-bottom: 36px; max-width: 500px;
+}
+.hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 28px; border-radius: 50px;
+  font-weight: 600; font-size: 15px;
+  transition: var(--transition-spring);
+}
+.btn-primary {
+  background: var(--green-800); color: white;
+}
+.btn-primary:hover { background: var(--green-700); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(27,94,32,0.25); }
+.btn-outline {
+  background: transparent; color: var(--green-800);
+  border: 2px solid var(--green-800);
+}
+.btn-outline:hover { background: var(--green-800); color: white; transform: translateY(-2px); }
+.btn-gold {
+  background: var(--copper); color: white;
+}
+.btn-gold:hover { background: var(--copper-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(196,145,94,0.3); }
+
+.hero-visual {
+  position: relative; display: flex; align-items: center; justify-content: center;
+}
+.hero-visual-card {
+  background: white; border-radius: var(--radius-xl);
+  padding: 0; overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  aspect-ratio: 3/4; width: 100%; max-width: 400px;
+  position: relative;
+}
+.hero-visual-card .card-img {
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg, var(--green-800) 0%, var(--green-600) 40%, var(--green-400) 100%);
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+}
+.hero-visual-card .card-img .card-inner {
+  text-align: center; color: white; padding: 40px;
+}
+.hero-visual-card .card-img .card-inner .card-icon {
+  font-size: 56px; margin-bottom: 16px;
+}
+.hero-visual-card .card-img .card-inner h3 {
+  font-family: var(--font-display); font-size: 24px; font-weight: 700; margin-bottom: 8px;
+}
+.hero-visual-card .card-img .card-inner p {
+  font-size: 14px; opacity: 0.9;
+}
+.hero-floating {
+  position: absolute; background: white;
+  border-radius: var(--radius-md); padding: 16px 20px;
+  box-shadow: var(--shadow-md);
+  display: flex; align-items: center; gap: 12px;
+  font-size: 14px; font-weight: 600;
+}
+.hero-floating.fl1 { top: 10%; right: -20px; }
+.hero-floating.fl2 { bottom: 15%; left: -30px; }
+.hero-floating .fl-dot { width: 10px; height: 10px; border-radius: 50%; }
+.hero-floating .fl-dot.green { background: var(--green-500); }
+.hero-floating .fl-dot.copper { background: var(--copper); }
+
+/* ═══════════════════════════════════════════════
+   IMPACT STRIP
+   ═══════════════════════════════════════════════ */
+.impact-strip {
+  background: var(--green-950); padding: 50px 0; color: white;
+}
+.impact-strip .container {
+  display: grid; grid-template-columns: repeat(4,1fr); gap: 40px;
+  text-align: center;
+}
+.impact-item .impact-number {
+  font-family: var(--font-display); font-size: clamp(28px, 4vw, 40px);
+  font-weight: 900; color: var(--sand-200); margin-bottom: 4px;
+}
+.impact-item .impact-label {
+  font-size: 13px; opacity: 0.7; font-weight: 500; letter-spacing: 1px; text-transform: uppercase;
+}
+
+/* ═══════════════════════════════════════════════
+   PAGE SECTIONS (hidden/shown by router)
+   ═══════════════════════════════════════════════ */
+.page { display: none; }
+.page.active { display: block; }
+
+/* ═══════════════════════════════════════════════
+   ABOUT PAGE
+   ═══════════════════════════════════════════════ */
+.about-hero {
+  padding: 140px 0 80px;
+  background: radial-gradient(ellipse 60% 40% at 30% 40%, var(--green-50) 0%, var(--sand-50) 70%);
+}
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+}
+.about-img-wrap {
+  position: relative;
+}
+.about-img-placeholder {
+  width: 100%; aspect-ratio: 4/5; border-radius: var(--radius-xl);
+  background: linear-gradient(135deg, var(--sand-200) 0%, var(--green-200) 50%, var(--green-400) 100%);
+  position: relative; overflow: hidden;
+  display: flex; align-items: flex-end; justify-content: center;
+}
+.about-img-placeholder .about-img-icon {
+  font-size: 180px; color: rgba(255,255,255,0.3); margin-bottom: -40px;
+}
+.about-quote-box {
+  position: absolute; bottom: -20px; right: -20px;
+  background: var(--green-800); color: white;
+  padding: 24px; border-radius: var(--radius-md);
+  max-width: 260px; box-shadow: var(--shadow-lg);
+}
+.about-quote-box p {
+  font-family: var(--font-display); font-style: italic;
+  font-size: 16px; line-height: 1.5; margin-bottom: 8px;
+}
+.about-quote-box span {
+  font-size: 13px; opacity: 0.8; font-weight: 500;
+}
+.about-content h2 { margin-bottom: 16px; }
+.about-story { margin-top: 24px; }
+.about-story p { color: var(--text-secondary); margin-bottom: 16px; line-height: 1.8; }
+
+.timeline { margin: 60px 0 0; }
+.timeline-item {
+  display: grid; grid-template-columns: 120px 1fr; gap: 24px;
+  padding: 24px 0; border-top: 1px solid var(--border);
+}
+.timeline-year {
+  font-family: var(--font-display); font-size: 28px; font-weight: 700;
+  color: var(--green-600);
+}
+.timeline-content h4 { font-size: 18px; font-weight: 600; margin-bottom: 4px; }
+.timeline-content p { color: var(--text-secondary); font-size: 14px; }
+
+.values-grid {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 48px;
+}
+.value-card {
+  background: white; padding: 32px 24px; border-radius: var(--radius-md);
+  border: 1px solid var(--border); text-align: center;
+  transition: var(--transition);
+}
+.value-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.value-card .value-icon {
+  width: 56px; height: 56px; background: var(--green-50);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 16px; font-size: 24px; color: var(--green-700);
+}
+.value-card h4 { font-size: 17px; font-weight: 600; margin-bottom: 8px; }
+.value-card p { font-size: 14px; color: var(--text-secondary); }
+
+/* ═══════════════════════════════════════════════
+   ECOSYSTEM PAGE
+   ═══════════════════════════════════════════════ */
+.ecosystem-hero { padding: 140px 0 80px; background: var(--sand-50); }
+.ecosystem-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 48px; }
+.eco-card {
+  background: white; border-radius: var(--radius-lg); overflow: hidden;
+  border: 1px solid var(--border); transition: var(--transition);
+}
+.eco-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+.eco-card-img {
+  height: 180px; display: flex; align-items: center; justify-content: center;
+  font-size: 48px; color: white;
+}
+.eco-card-img.rove { background: linear-gradient(135deg, var(--green-800), var(--green-600)); }
+.eco-card-img.ruta { background: linear-gradient(135deg, #1B5E20, #66BB6A); }
+.eco-card-img.huellas { background: linear-gradient(135deg, #8B5E3C, var(--copper)); }
+.eco-card-img.podcast { background: linear-gradient(135deg, #2D3436, #636E72); }
+.eco-card-img.conf { background: linear-gradient(135deg, #0D2818, #2E7D32); }
+.eco-card-img.emp { background: linear-gradient(135deg, var(--copper), var(--sand-400)); }
+.eco-card-body { padding: 24px; }
+.eco-card-body h4 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+.eco-card-body p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px; }
+.eco-card-body .eco-tag {
+  display: inline-block; padding: 4px 12px; background: var(--green-50);
+  color: var(--green-700); border-radius: 50px; font-size: 12px; font-weight: 600;
+}
+
+/* ═══════════════════════════════════════════════
+   COMMUNITY PAGE
+   ═══════════════════════════════════════════════ */
+.community-hero { padding: 140px 0 80px; background: var(--sand-50); }
+.community-tabs { display: flex; gap: 8px; margin: 32px 0; flex-wrap: wrap; }
+.community-tab {
+  padding: 10px 24px; border-radius: 50px;
+  font-size: 14px; font-weight: 600; background: white;
+  border: 1px solid var(--border); color: var(--text-secondary);
+  transition: var(--transition);
+}
+.community-tab.active, .community-tab:hover { background: var(--green-800); color: white; border-color: var(--green-800); }
+.community-content { display: none; }
+.community-content.active { display: block; }
+
+.events-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(300px,1fr)); gap: 20px; }
+.event-card {
+  background: white; border-radius: var(--radius-md); overflow: hidden;
+  border: 1px solid var(--border); transition: var(--transition);
+}
+.event-card:hover { box-shadow: var(--shadow-md); }
+.event-card-top {
+  padding: 20px 24px; display: flex; gap: 16px; align-items: flex-start;
+}
+.event-date {
+  width: 56px; height: 56px; background: var(--green-50);
+  border-radius: var(--radius-sm); display: flex; flex-direction: column;
+  align-items: center; justify-content: center; flex-shrink: 0;
+}
+.event-date .ed-day { font-size: 22px; font-weight: 700; color: var(--green-800); line-height: 1; }
+.event-date .ed-month { font-size: 11px; color: var(--green-600); font-weight: 600; text-transform: uppercase; }
+.event-info h4 { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+.event-info .event-meta { font-size: 13px; color: var(--text-muted); }
+.event-card-bottom {
+  padding: 14px 24px; border-top: 1px solid var(--border);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.event-card-bottom .btn { padding: 8px 18px; font-size: 13px; }
+
+.volunteer-form {
+  background: white; border-radius: var(--radius-lg); padding: 40px;
+  border: 1px solid var(--border); max-width: 600px;
+}
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 6px; color: var(--text-primary); }
+.form-group input, .form-group select, .form-group textarea {
+  width: 100%; padding: 12px 16px; border: 1px solid var(--border);
+  border-radius: var(--radius-sm); font-size: 14px;
+  transition: var(--transition); background: var(--sand-50);
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+  outline: none; border-color: var(--green-500); box-shadow: 0 0 0 3px rgba(76,175,80,0.15);
+}
+
+/* ═══════════════════════════════════════════════
+   TARJETA VERDE PAGE
+   ═══════════════════════════════════════════════ */
+.tarjeta-hero { padding: 140px 0 80px; background: var(--sand-50); }
+.tarjeta-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; margin-top: 40px; }
+.tarjeta-card-preview {
+  perspective: 1000px;
+}
+.tarjeta-card-3d {
+  background: linear-gradient(135deg, var(--green-950) 0%, var(--green-800) 60%, var(--green-600) 100%);
+  border-radius: var(--radius-lg); padding: 36px;
+  color: white; position: relative; overflow: hidden;
+  box-shadow: 0 20px 60px rgba(13,40,24,0.3);
+  min-height: 440px; display: flex; flex-direction: column; justify-content: space-between;
+}
+.tarjeta-card-3d::before {
+  content: ''; position: absolute; top: -60px; right: -60px;
+  width: 200px; height: 200px; border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.1);
+}
+.tarjeta-card-3d::after {
+  content: ''; position: absolute; bottom: -40px; left: -40px;
+  width: 160px; height: 160px; border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.08);
+}
+.tarjeta-card-3d .tv-chip {
+  width: 44px; height: 32px; background: rgba(255,255,255,0.2);
+  border-radius: 4px; margin-bottom: 24px;
+}
+.tarjeta-card-3d .tv-name {
+  font-family: var(--font-display); font-size: 22px; font-weight: 700;
+}
+.tarjeta-card-3d .tv-id {
+  font-size: 12px; opacity: 0.7; letter-spacing: 2px; margin-bottom: 24px;
+}
+.tarjeta-card-3d .tv-level {
+  display: inline-block; padding: 6px 16px; border-radius: 50px;
+  font-size: 13px; font-weight: 600; background: rgba(255,255,255,0.2);
+}
+.tarjeta-card-3d .tv-qr {
+  width: 80px; height: 80px; background: white; border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 40px; color: var(--green-950);
+}
+.tarjeta-card-3d .tv-points {
+  font-family: var(--font-display); font-size: 32px; font-weight: 900;
+  color: var(--sand-200);
+}
+.tarjeta-card-3d .tv-points span { font-size: 14px; opacity: 0.7; font-weight: 400; }
+.tarjeta-card-3d .tv-bottom {
+  display: flex; justify-content: space-between; align-items: flex-end;
+}
+
+.tv-benefits { margin-top: 32px; }
+.tv-benefit {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 16px 0; border-bottom: 1px solid var(--border);
+}
+.tv-benefit .tv-b-icon {
+  width: 40px; height: 40px; background: var(--green-50);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; color: var(--green-700); font-size: 18px;
+}
+.tv-benefit h4 { font-size: 15px; font-weight: 600; margin-bottom: 2px; }
+.tv-benefit p { font-size: 13px; color: var(--text-secondary); }
+
+.levels-strip {
+  display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin-top: 32px;
+}
+.level-card {
+  text-align: center; padding: 24px 16px; border-radius: var(--radius-md);
+  border: 2px solid var(--border); background: white; transition: var(--transition);
+}
+.level-card.active { border-color: var(--green-600); background: var(--green-50); }
+.level-card .level-icon { font-size: 32px; margin-bottom: 8px; }
+.level-card h5 { font-size: 14px; font-weight: 700; color: var(--green-800); margin-bottom: 4px; }
+.level-card p { font-size: 12px; color: var(--text-muted); }
+
+.badges-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(100px,1fr)); gap: 12px; margin-top: 16px; }
+.badge-item {
+  text-align: center; padding: 16px 8px; border-radius: var(--radius-sm);
+  background: white; border: 1px solid var(--border);
+  opacity: 0.5; transition: var(--transition);
+}
+.badge-item.earned { opacity: 1; border-color: var(--copper); background: #FFF9F2; }
+.badge-item .badge-icon { font-size: 28px; margin-bottom: 6px; }
+.badge-item .badge-name { font-size: 11px; font-weight: 600; color: var(--text-secondary); }
+
+.tv-login-prompt {
+  background: white; padding: 40px; border-radius: var(--radius-lg);
+  text-align: center; border: 1px solid var(--border);
+}
+.tv-login-prompt h3 { font-family: var(--font-display); font-size: 24px; margin-bottom: 8px; }
+.tv-login-prompt p { color: var(--text-secondary); margin-bottom: 24px; }
+
+.login-form { max-width: 400px; margin: 0 auto; text-align: left; }
+.login-form .form-group { margin-bottom: 16px; }
+
+.rewards-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(240px,1fr)); gap: 16px; margin-top: 24px; }
+.reward-card {
+  background: white; border-radius: var(--radius-md); overflow: hidden;
+  border: 1px solid var(--border); transition: var(--transition);
+}
+.reward-card:hover { box-shadow: var(--shadow-md); }
+.reward-card-img {
+  height: 140px; display: flex; align-items: center; justify-content: center;
+  font-size: 40px; background: var(--sand-100);
+}
+.reward-card-body { padding: 16px 20px; }
+.reward-card-body h5 { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+.reward-card-body .reward-cost { font-size: 14px; color: var(--copper); font-weight: 700; }
+.reward-card-body .reward-cost i { margin-right: 4px; }
+
+/* ═══════════════════════════════════════════════
+   STORE PAGE
+   ═══════════════════════════════════════════════ */
+.store-hero { padding: 140px 0 80px; background: var(--sand-50); }
+.store-categories {
+  display: flex; gap: 8px; margin: 32px 0; flex-wrap: wrap;
+}
+.store-cat {
+  padding: 8px 20px; border-radius: 50px; font-size: 13px; font-weight: 600;
+  background: white; border: 1px solid var(--border); color: var(--text-secondary);
+  transition: var(--transition);
+}
+.store-cat.active, .store-cat:hover { background: var(--green-800); color: white; border-color: var(--green-800); }
+.store-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(260px,1fr)); gap: 24px; }
+.product-card {
+  background: white; border-radius: var(--radius-lg); overflow: hidden;
+  border: 1px solid var(--border); transition: var(--transition);
+}
+.product-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
+.product-card-img {
+  height: 240px; display: flex; align-items: center; justify-content: center;
+  font-size: 48px; color: white;
+  position: relative;
+}
+.product-card-img.p1 { background: linear-gradient(135deg, #2D6A4F, #40916C); }
+.product-card-img.p2 { background: linear-gradient(135deg, #1B4332, #52796F); }
+.product-card-img.p3 { background: linear-gradient(135deg, #8B5E3C, #C4915E); }
+.product-card-img.p4 { background: linear-gradient(135deg, #0D2818, #1B5E20); }
+.product-card-img.p5 { background: linear-gradient(135deg, #606C38, #A3B18A); }
+.product-card-img.p6 { background: linear-gradient(135deg, #C4915E, #D4A574); }
+.product-badge {
+  position: absolute; top: 12px; left: 12px;
+  padding: 4px 12px; border-radius: 50px;
+  font-size: 11px; font-weight: 700; color: white;
+  background: var(--copper);
+}
+.product-card-body { padding: 20px; }
+.product-card-body .product-cat {
+  font-size: 11px; text-transform: uppercase; letter-spacing: 1px;
+  color: var(--green-600); font-weight: 600; margin-bottom: 6px;
+}
+.product-card-body h4 { font-size: 17px; font-weight: 600; margin-bottom: 6px; }
+.product-card-body .product-story {
+  font-size: 13px; color: var(--text-secondary); margin-bottom: 12px;
+  line-height: 1.5;
+}
+.product-card-body .product-price {
+  font-family: var(--font-display); font-size: 22px; font-weight: 700;
+  color: var(--green-800);
+}
+.product-card-body .product-actions { margin-top: 12px; display: flex; gap: 8px; }
+
+.cart-panel {
+  position: fixed; top: 0; right: 0; width: 380px; max-width: 100vw;
+  height: 100vh; background: white; z-index: 2000;
+  box-shadow: -8px 0 40px rgba(0,0,0,0.12);
+  transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+  display: flex; flex-direction: column;
+}
+.cart-panel.open { transform: translateX(0); }
+.cart-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.4);
+  z-index: 1999; opacity: 0; pointer-events: none;
+  transition: opacity 0.35s;
+}
+.cart-overlay.open { opacity: 1; pointer-events: auto; }
+.cart-header {
+  padding: 20px 24px; border-bottom: 1px solid var(--border);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.cart-items { flex: 1; overflow-y: auto; padding: 16px 24px; }
+.cart-item {
+  display: flex; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--border);
+  align-items: center;
+}
+.cart-item-img {
+  width: 64px; height: 64px; border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; flex-shrink: 0;
+}
+.cart-item-info { flex: 1; }
+.cart-item-info h5 { font-size: 14px; font-weight: 600; }
+.cart-item-info .ci-price { font-size: 13px; color: var(--green-700); font-weight: 600; }
+.cart-item-qty {
+  display: flex; align-items: center; gap: 6px; margin-top: 4px;
+}
+.cart-item-qty button {
+  width: 24px; height: 24px; border-radius: 50%; border: 1px solid var(--border);
+  background: white; font-size: 14px; display: flex; align-items: center; justify-content: center;
+}
+.cart-footer { padding: 20px 24px; border-top: 1px solid var(--border); }
+.cart-total {
+  display: flex; justify-content: space-between; font-size: 18px; font-weight: 700;
+  margin-bottom: 16px;
+}
+
+/* ═══════════════════════════════════════════════
+   BLOG PAGE
+   ═══════════════════════════════════════════════ */
+.blog-hero { padding: 140px 0 80px; background: var(--sand-50); }
+.blog-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(340px,1fr)); gap: 28px; margin-top: 40px; }
+.blog-card {
+  background: white; border-radius: var(--radius-lg); overflow: hidden;
+  border: 1px solid var(--border); transition: var(--transition);
+}
+.blog-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.blog-card-img {
+  height: 200px; display: flex; align-items: center; justify-content: center;
+  font-size: 48px; color: white;
+}
+.blog-card-body { padding: 24px; }
+.blog-card-body .blog-cat {
+  font-size: 12px; text-transform: uppercase; letter-spacing: 1px;
+  color: var(--green-600); font-weight: 700; margin-bottom: 8px;
+}
+.blog-card-body h4 { font-size: 18px; font-weight: 600; margin-bottom: 8px; line-height: 1.4; }
+.blog-card-body p { font-size: 14px; color: var(--text-secondary); margin-bottom: 16px; line-height: 1.6; }
+.blog-card-body .blog-meta {
+  font-size: 12px; color: var(--text-muted); display: flex; gap: 12px;
+}
+.blog-card-body .blog-meta i { margin-right: 4px; }
+
+/* ═══════════════════════════════════════════════
+   IMPACT PAGE
+   ═══════════════════════════════════════════════ */
+.impact-hero { padding: 140px 0 80px; background: var(--sand-50); }
+.impact-dashboard {
+  display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; margin-top: 40px;
+}
+.impact-stat {
+  background: white; padding: 32px 24px; border-radius: var(--radius-md);
+  text-align: center; border: 1px solid var(--border); transition: var(--transition);
+}
+.impact-stat:hover { box-shadow: var(--shadow-md); }
+.impact-stat .is-icon {
+  font-size: 36px; margin-bottom: 12px; color: var(--green-600);
+}
+.impact-stat .is-number {
+  font-family: var(--font-display); font-size: 40px; font-weight: 900;
+  color: var(--green-950); margin-bottom: 4px;
+}
+.impact-stat .is-label {
+  font-size: 13px; color: var(--text-muted); font-weight: 500; text-transform: uppercase; letter-spacing: 1px;
+}
+
+.impact-visual-bar {
+  margin-top: 48px; background: white; border-radius: var(--radius-lg);
+  padding: 40px; border: 1px solid var(--border);
+}
+.impact-visual-bar h3 { font-size: 20px; margin-bottom: 24px; }
+.ivb-item { margin-bottom: 20px; }
+.ivb-item .ivb-header {
+  display: flex; justify-content: space-between; margin-bottom: 8px;
+  font-size: 14px; font-weight: 600;
+}
+.ivb-item .ivb-bar {
+  height: 12px; background: var(--sand-100); border-radius: 50px; overflow: hidden;
+}
+.ivb-item .ivb-fill {
+  height: 100%; border-radius: 50px; background: linear-gradient(90deg, var(--green-600), var(--green-400));
+  transition: width 1.5s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* ═══════════════════════════════════════════════
+   CONTACT PAGE
+   ═══════════════════════════════════════════════ */
+.contact-hero { padding: 140px 0 80px; background: var(--sand-50); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 40px; }
+.contact-form-card {
+  background: white; padding: 40px; border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+}
+.contact-form-card h3 { font-size: 22px; margin-bottom: 24px; }
+.contact-info-list { display: flex; flex-direction: column; gap: 28px; }
+.contact-info-item { display: flex; gap: 16px; align-items: flex-start; }
+.contact-info-item .cii-icon {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: var(--green-50); display: flex; align-items: center;
+  justify-content: center; font-size: 20px; color: var(--green-700);
+  flex-shrink: 0;
+}
+.contact-info-item h5 { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+.contact-info-item p { font-size: 14px; color: var(--text-secondary); }
+.social-links { display: flex; gap: 12px; margin-top: 24px; }
+.social-link {
+  width: 44px; height: 44px; border-radius: 50%; background: var(--green-50);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; color: var(--green-700); transition: var(--transition);
+}
+.social-link:hover { background: var(--green-800); color: white; }
+
+.btn-whatsapp {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #25D366; color: white; padding: 14px 28px;
+  border-radius: 50px; font-weight: 600; font-size: 15px;
+  transition: var(--transition-spring);
+}
+.btn-whatsapp:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,211,102,0.3); }
+
+.whatsapp-float {
+  position: fixed; bottom: 28px; right: 28px; z-index: 1500;
+  width: 60px; height: 60px; border-radius: 50%;
+  background: #25D366; color: white; display: flex; align-items: center;
+  justify-content: center; font-size: 28px;
+  box-shadow: 0 6px 24px rgba(37,211,102,0.35);
+  transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s;
+  animation: floatPulse 2s ease-in-out infinite;
+}
+.whatsapp-float:hover {
+  transform: scale(1.12);
+  box-shadow: 0 10px 32px rgba(37,211,102,0.45);
+}
+@keyframes floatPulse {
+  0%, 100% { box-shadow: 0 6px 24px rgba(37,211,102,0.35); }
+  50% { box-shadow: 0 6px 36px rgba(37,211,102,0.55); }
+}
+
+/* ═══════════════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════════════ */
+.footer {
+  background: var(--green-950); color: rgba(255,255,255,0.8);
+  padding: 80px 0 30px;
+}
+.footer-grid {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px;
+  margin-bottom: 48px;
+}
+.footer-brand .nav-logo { color: white; margin-bottom: 16px; }
+.footer-brand p { font-size: 14px; line-height: 1.7; margin-bottom: 20px; }
+.footer h5 {
+  color: white; font-size: 14px; font-weight: 600; margin-bottom: 20px;
+  letter-spacing: 1px; text-transform: uppercase;
+}
+.footer a { display: block; font-size: 14px; color: rgba(255,255,255,0.6); padding: 6px 0; transition: var(--transition); }
+.footer a:hover { color: white; }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 24px; display: flex; justify-content: space-between;
+  font-size: 13px; flex-wrap: wrap; gap: 12px;
+}
+
+/* ═══════════════════════════════════════════════
+   MODAL
+   ═══════════════════════════════════════════════ */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.55);
+  z-index: 3000; display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none; transition: opacity 0.3s;
+  padding: 20px;
+}
+.modal-overlay.open { opacity: 1; pointer-events: auto; }
+.modal-box {
+  background: white; border-radius: var(--radius-xl); padding: 40px;
+  max-width: 480px; width: 100%; max-height: 90vh; overflow-y: auto;
+  position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+}
+.modal-close {
+  position: absolute; top: 16px; right: 16px;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--sand-100); border: none;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; transition: var(--transition);
+}
+.modal-close:hover { background: var(--sand-200); }
+
+/* ═══════════════════════════════════════════════
+   TOAST
+   ═══════════════════════════════════════════════ */
+.toast-container {
+  position: fixed; bottom: 24px; right: 24px; z-index: 5000;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.toast {
+  background: var(--green-950); color: white; padding: 14px 22px;
+  border-radius: var(--radius-md); font-size: 14px; font-weight: 500;
+  box-shadow: var(--shadow-lg);
+  animation: toastIn 0.35s cubic-bezier(0.34,1.56,0.64,1),
+             toastOut 0.3s ease forwards 3s;
+  max-width: 360px;
+}
+.toast.error { background: #C62828; }
+.toast.success { background: var(--green-800); }
+@keyframes toastIn { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes toastOut { from { opacity: 1; } to { opacity: 0; transform: translateY(10px); } }
+
+/* ═══════════════════════════════════════════════
+   HERO SPLIT (for inner pages)
+   ═══════════════════════════════════════════════ */
+.inner-hero {
+  padding: 140px 0 60px;
+  background: radial-gradient(ellipse 60% 50% at 50% 40%, var(--green-50) 0%, var(--sand-50) 70%);
+  text-align: center;
+}
+.inner-hero .section-label { justify-content: center; }
+.inner-hero .section-subtitle { margin: 0 auto; }
+
+/* ═══════════════════════════════════════════════
+   SCROLL ANIMATIONS
+   ═══════════════════════════════════════════════ */
+.fade-up {
+  opacity: 0; transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.34,1.56,0.64,1);
+}
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+/* ═══════════════════════════════════════════════
+   MOBILE NAV
+   ═══════════════════════════════════════════════ */
+.mobile-menu {
+  position: fixed; inset: 0; z-index: 999;
+  background: var(--sand-50);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 28px;
+  transform: translateY(-100%); transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+.mobile-menu.open { transform: translateY(0); }
+.mobile-menu a {
+  font-size: 20px; font-weight: 600; color: var(--green-950);
+  font-family: var(--font-display);
+}
+.mobile-menu .nav-cta { font-family: var(--font-body); font-size: 16px; }
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+  .hero-visual { order: -1; }
+  .hero-visual-card { max-width: 300px; }
+  .about-grid { grid-template-columns: 1fr; }
+  .tarjeta-layout { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .impact-dashboard { grid-template-columns: repeat(2,1fr); }
+  .ecosystem-grid { grid-template-columns: repeat(2,1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .impact-strip .container { grid-template-columns: repeat(2,1fr); gap: 28px; }
+  .values-grid { grid-template-columns: repeat(2,1fr); }
+  .levels-strip { grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-toggle { display: flex; }
+  .ecosystem-grid { grid-template-columns: 1fr; }
+  .impact-dashboard { grid-template-columns: 1fr 1fr; }
+  .values-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .cart-panel { width: 100%; }
+  .blog-grid { grid-template-columns: 1fr; }
+  .hero-floating { display: none; }
+  .section { padding: 64px 0; }
+  .impact-strip .container { grid-template-columns: repeat(2,1fr); }
+  .levels-strip { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 480px) {
+  .impact-dashboard { grid-template-columns: 1fr; }
+  .impact-strip .container { grid-template-columns: 1fr; }
+  .levels-strip { grid-template-columns: 1fr; }
+  .hero-actions { flex-direction: column; }
+  .hero-actions .btn { width: 100%; justify-content: center; }
+  .store-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     NAVBAR
+     ═══════════════════════════════════════════ -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href="#home" class="nav-logo" data-page="home">
+      <div class="nav-logo-icon">R</div>
+      <div>ROVE<span>Project</span></div>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#home" data-page="home" class="active">Inicio</a>
+      <a href="#about" data-page="about">Sobre Henry</a>
+      <a href="#ecosystem" data-page="ecosystem">Ecosistema</a>
+      <a href="#community" data-page="community">Comunidad</a>
+      <a href="#tarjeta-verde" data-page="tarjeta-verde">Tarjeta Verde</a>
+      <a href="#store" data-page="store">Tienda</a>
+      <a href="#blog" data-page="blog">Blog</a>
+      <a href="#impact" data-page="impact">Impacto</a>
+      <a href="#contact" data-page="contact">Contacto</a>
+    </div>
+    <button class="nav-cta" onclick="navigateTo('tarjeta-verde')">
+      <i class="fa-solid fa-credit-card"></i> Tarjeta Verde
+    </button>
+    <button class="nav-toggle" id="navToggle" onclick="toggleMobileMenu()" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#home" data-page="home" onclick="navigateTo('home');closeMobileMenu()">Inicio</a>
+  <a href="#about" data-page="about" onclick="navigateTo('about');closeMobileMenu()">Sobre Henry</a>
+  <a href="#ecosystem" data-page="ecosystem" onclick="navigateTo('ecosystem');closeMobileMenu()">Ecosistema</a>
+  <a href="#community" data-page="community" onclick="navigateTo('community');closeMobileMenu()">Comunidad</a>
+  <a href="#tarjeta-verde" data-page="tarjeta-verde" onclick="navigateTo('tarjeta-verde');closeMobileMenu()">Tarjeta Verde</a>
+  <a href="#store" data-page="store" onclick="navigateTo('store');closeMobileMenu()">Tienda</a>
+  <a href="#blog" data-page="blog" onclick="navigateTo('blog');closeMobileMenu()">Blog</a>
+  <a href="#impact" data-page="impact" onclick="navigateTo('impact');closeMobileMenu()">Impacto</a>
+  <a href="#contact" data-page="contact" onclick="navigateTo('contact');closeMobileMenu()">Contacto</a>
+  <button class="nav-cta" onclick="navigateTo('tarjeta-verde');closeMobileMenu()">
+    <i class="fa-solid fa-credit-card"></i> Tarjeta Verde
+  </button>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     PAGE: HOME
+     ═══════════════════════════════════════════ -->
+<section class="page active" id="page-home">
+  <div class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-badge">
+            <i class="fa-solid fa-seedling"></i> Construyendo comunidad
+          </div>
+          <h1 class="hero-title">
+            Construyendo<br><em>comunidad</em><br>para transformar ciudades
+          </h1>
+          <p class="hero-text">
+            ROVE Project es mucho más que una plataforma. Somos un movimiento que conecta personas,
+            proyectos y oportunidades bajo el liderazgo de <strong>Henry Contreras</strong>.
+            Voluntariado, emprendimiento, sostenibilidad y participación ciudadana en un solo ecosistema.
+          </p>
+          <div class="hero-actions">
+            <button class="btn btn-primary" onclick="navigateTo('ecosystem')">
+              <i class="fa-solid fa-compass"></i> Conoce ROVE Project
+            </button>
+            <button class="btn btn-outline" onclick="navigateTo('community')">
+              <i class="fa-solid fa-user-group"></i> Únete a la comunidad
+            </button>
+            <button class="btn btn-gold" onclick="navigateTo('tarjeta-verde')">
+              <i class="fa-solid fa-credit-card"></i> Obtén tu Tarjeta Verde
+            </button>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-visual-card">
+            <div class="card-img">
+              <div class="card-inner">
+                <div class="card-icon"><i class="fa-solid fa-tree-city"></i></div>
+                <h3>ROVE Project</h3>
+                <p>Transformando ciudades, una comunidad a la vez</p>
+              </div>
+            </div>
+          </div>
+          <div class="hero-floating fl1">
+            <div class="fl-dot green"></div>
+            <span>1,200+ voluntarios activos</span>
+          </div>
+          <div class="hero-floating fl2">
+            <div class="fl-dot copper"></div>
+            <span>50+ proyectos realizados</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="impact-strip">
+    <div class="container">
+      <div class="impact-item">
+        <div class="impact-number" data-count="2500">0</div>
+        <div class="impact-label">Árboles plantados</div>
+      </div>
+      <div class="impact-item">
+        <div class="impact-number" data-count="1200">0</div>
+        <div class="impact-label">Voluntarios</div>
+      </div>
+      <div class="impact-item">
+        <div class="impact-number" data-count="15">0</div>
+        <div class="impact-label">Campañas realizadas</div>
+      </div>
+      <div class="impact-item">
+        <div class="impact-number" data-count="5000">0</div>
+        <div class="impact-label">Personas beneficiadas</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="container">
+      <div class="section-label">Nuestro Impacto</div>
+      <h2 class="section-title">Cada acción cuenta</h2>
+      <p class="section-subtitle">En ROVE Project creemos que pequeñas acciones constantes generan grandes transformaciones. Conoce cómo estamos cambiando nuestra ciudad.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     PAGE: ABOUT
+     ═══════════════════════════════════════════ -->
+<section class="page" id="page-about">
+  <div class="about-hero">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-img-wrap">
+          <div class="about-img-placeholder">
+            <div class="about-img-icon"><i class="fa-solid fa-user-tie"></i></div>
+          </div>
+          <div class="about-quote-box">
+            <p>"No basta con soñar una ciudad mejor. Hay que construirla, juntos, desde la comunidad."</p>
+            <span>— Henry Contreras</span>
+          </div>
+        </div>
+        <div>
+          <div class="section-label">Sobre Henry</div>
+          <h2 class="section-title">El liderazgo que transforma</h2>
+          <div class="about-story">
+            <p>Henry Contreras no es solo un líder comunitario. Es un constructor de puentes entre las necesidades reales de la ciudad y las personas dispuestas a transformarla. Su trayectoria comenzó en las calles, escuchando, aprendiendo y actuando.</p>
+            <p>Con más de una década de trabajo comunitario, Henry ha impulsado proyectos ambientales, sociales y culturales que han cambiado la vida de miles de personas. Su visión es clara: <strong>una ciudad se transforma cuando su gente se organiza</strong>.</p>
+            <p>ROVE Project nace como la plataforma que materializa esa visión. No es un proyecto personal: es un ecosistema donde cada persona encuentra su lugar para contribuir, aprender y crecer.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline" style="margin-top:80px">
+        <div class="section-label">Trayectoria</div>
+        <h2 class="section-title" style="margin-bottom:40px">El camino recorrido</h2>
+        <div class="timeline-item">
+          <div class="timeline-year">2010</div>
+          <div class="timeline-content">
+            <h4>Primeras acciones comunitarias</h4>
+            <p>Organización de jornadas de limpieza y reforestación en barrios vulnerables.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2015</div>
+          <div class="timeline-content">
+            <h4>Fundación de Ruta Verde</h4>
+            <p>Creación del primer proyecto estructurado de impacto ambiental comunitario.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2018</div>
+          <div class="timeline-content">
+            <h4>Nacimiento de Huellas Music</h4>
+            <p>Proyecto cultural que une música, juventud y transformación social.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2022</div>
+          <div class="timeline-content">
+            <h4>Lanzamiento de ROVE Project</h4>
+            <p>Integración de todos los proyectos en una plataforma única de comunidad.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2026</div>
+          <div class="timeline-content">
+            <h4>Tarjeta Verde y expansión</h4>
+            <p>Sistema de membresía que conecta a la comunidad con beneficios, puntos y participación activa.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:80px">
+        <div class="section-label">Valores</div>
+        <h2 class="section-title" style="margin-bottom:16px">Lo que nos mueve</h2>
+        <div class="values-grid">
+          <div class="value-card">
+            <div class="value-icon"><i class="fa-solid fa-hand-holding-heart"></i></div>
+            <h4>Comunidad</h4>
+            <p>Creemos en el poder de las personas organizadas para transformar su entorno.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon"><i class="fa-solid fa-seedling"></i></div>
+            <h4>Sostenibilidad</h4>
+            <p>Cada proyecto está diseñado para generar impacto duradero en el tiempo.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon"><i class="fa-solid fa-lightbulb"></i></div>
+            <h4>Innovación social</h4>
+            <p>Buscamos nuevas formas de resolver problemas antiguos con creatividad y tecnología.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     PAGE: ECOSYSTEM
+     ═══════════════════════════════════════════ -->
+<section class="page" id="page-ecosystem">
+  <div class="inner-hero">
+    <div class="container">
+      <div class="section-label">Ecosistema</div>
+      <h2 class="section-title">Proyectos que transforman</h2>
+      <p class="section-subtitle">Cada iniciativa es una pieza de un ecosistema diseñado para impulsar el cambio social, ambiental y cultural en nuestra ciudad.</p>
+    </div>
+  </div>
+  <div class="section" style="padding-top:0">
+    <div class="container">
+      <div class="ecosystem-grid">
+        <div class="eco-card">
+          <div class="eco-card-img rove"><i class="fa-solid fa-tree-city"></i></div>
+          <div class="eco-card-body">
+            <span class="eco-tag">Plataforma</span>
+            <h4 style="margin-top: 8px;">ROVE Project</h4>
+            <p>La plataforma principal que integra todos los proyectos. El corazón del ecosistema comunitario.</p>
+          </div>
+        </div>
+        <div class="eco-card">
+          <div class="eco-card-img ruta"><i class="fa-solid fa-leaf"></i></div>
+          <div class="eco-card-body">
+            <span class="eco-tag">Ambiental</span>
+            <h4 style="margin-top: 8px;">Ruta Verde</h4>
+            <p>Proyecto de reforestación, limpieza y educación ambiental que transforma espacios urbanos.</p>
+          </div>
+        </div>
+        <div class="eco-card">
+          <div class="eco-card-img huellas"><i class="fa-solid fa-music"></i></div>
+          <div class="eco-card-body">
+            <span class="eco-tag">Cultural</span>
+            <h4 style="margin-top: 8px;">Huellas Music</h4>
+            <p>Iniciativa cultural que usa la música como herramienta de transformación social juvenil.</p>
+          </div>
+        </div>
+        <div class="eco-card">
+          <div class="eco-card-img podcast"><i class="fa-solid fa-podcast"></i></div>
+          <div class="eco-card-body">
+            <span class="eco-tag">Comunicación</span>
+            <h4 style="margin-top: 8px;">Podcast</h4>
+            <p>Conversaciones sobre ciudad, liderazgo e innovación social con invitados que inspiran.</p>
+          </div>
+        </div>
+        <div class="eco-card">
+          <div class="eco-card-img conf"><i class="fa-solid fa-microphone-lines"></i></div>
+          <div class="eco-card-body">
+            <span class="eco-tag">Liderazgo</span>
+            <h4 style="margin-top: 8px;">Conferencias</h4>
+            <p>Charlas y talleres que llevan el mensaje de transformación comunitaria a empresas, escuelas y organizaciones.</p>
+          </div>
+        </div>
+        <div class="eco-card">
+          <div class="eco-card-img emp"><i class="fa-solid fa-store"></i></div>
+          <div class="eco-card-body">
+            <span class="eco-tag">Desarrollo</span>
+            <h4 style="margin-top: 8px;">Emprendimientos</h4>
+            <p>Apoyo a emprendedores locales que comparten la visión de una economía con propósito social.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     PAGE: COMMUNITY
+     ═══════════════════════════════════════════ -->
+<section class="page" id="page-community">
+  <div class="inner-hero">
+    <div class="container">
+      <div class="section-label">Comunidad</div>
+      <h2 class="section-title">Tu lugar para participar</h2>
+      <p class="section-subtitle">Regístrate, inscríbete en actividades, participa en campañas y forma parte de una comunidad que está transformando la ciudad.</p>
+    </div>
+  </div>
+  <div class="section" style="padding-top:0">
+    <div class="container">
+      <div class="community-tabs">
+        <button class="community-tab active" onclick="switchCommunityTab('events')">Actividades</button>
+        <button class="community-tab" onclick="switchCommunityTab('volunteer')">Voluntariado</button>
+        <button class="community-tab" onclick="switchCommunityTab('register')">Registro</button>
+      </div>
+
+      <div class="community-content active" id="comm-events">
+        <div class="events-grid">
+          <div class="event-card">
+            <div class="event-card-top">
+              <div class="event-date">
+                <span class="ed-day">15</span>
+                <span class="ed-month">Ago</span>
+              </div>
+              <div class="event-info">
+                <h4>Jornada de Reforestación Urbana</h4>
+                <div class="event-meta"><i class="fa-solid fa-location-dot"></i> Parque Central &middot; <i class="fa-solid fa-clock"></i> 8:00 AM</div>
+              </div>
+            </div>
+            <div class="event-card-bottom">
+              <span style="font-size:13px; color: var(--text-muted);">30 cupos</span>
+              <button class="btn btn-primary" onclick="showToast('Te has inscrito a la jornada de reforestación', 'success')">Inscribirme</button>
+            </div>
+          </div>
+          <div class="event-card">
+            <div class="event-card-top">
+              <div class="event-date">
+                <span class="ed-day">22</span>
+                <span class="ed-month">Ago</span>
+              </div>
+              <div class="event-info">
+                <h4>Taller de Liderazgo Comunitario</h4>
+                <div class="event-meta"><i class="fa-solid fa-location-dot"></i> Centro Cultural &middot; <i class="fa-solid fa-clock"></i> 10:00 AM</div>
+              </div>
+            </div>
+            <div class="event-card-bottom">
+              <span style="font-size:13px; color: var(--text-muted);">50 cupos</span>
+              <button class="btn btn-primary" onclick="showToast('Te has inscrito al taller de liderazgo', 'success')">Inscribirme</button>
+            </div>
+          </div>
+          <div class="event-card">
+            <div class="event-card-top">
+              <div class="event-date">
+                <span class="ed-day">05</span>
+                <span class="ed-month">Sep</span>
+              </div>
+              <div class="event-info">
+                <h4>Huellas Music: Concierto por la Ciudad</h4>
+                <div class="event-meta"><i class="fa-solid fa-location-dot"></i> Plaza Principal &middot; <i class="fa-solid fa-clock"></i> 6:00 PM</div>
+              </div>
+            </div>
+            <div class="event-card-bottom">
+              <span style="font-size:13px; color: var(--text-muted);">200 cupos</span>
+              <button class="btn btn-primary" onclick="showToast('Te has registrado al concierto', 'success')">Inscribirme</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="community-content" id="comm-volunteer">
+        <div class="volunteer-form">
+          <h3 style="font-family: var(--font-display); font-size: 22px; margin-bottom: 8px;">Inscríbete como voluntario</h3>
+          <p style="color: var(--text-secondary); margin-bottom: 24px; font-size: 14px;">Completa tus datos y nos pondremos en contacto contigo.</p>
+          <form onsubmit="handleVolunteer(event)">
+            <div class="form-group">
+              <label for="v-name">Nombre completo</label>
+              <input type="text" id="v-name" required placeholder="Tu nombre">
+            </div>
+            <div class="form-group">
+              <label for="v-email">Correo electrónico</label>
+              <input type="email" id="v-email" required placeholder="tu@email.com">
+            </div>
+            <div class="form-group">
+              <label for="v-phone">Teléfono / WhatsApp</label>
+              <input type="tel" id="v-phone" required placeholder="+00 000 0000">
+            </div>
+            <div class="form-group">
+              <label for="v-interest">Área de interés</label>
+              <select id="v-interest">
+                <option>Medio ambiente</option>
+                <option>Cultura y música</option>
+                <option>Comunicación</option>
+                <option>Emprendimiento</option>
+                <option>Eventos</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="v-msg">¿Por qué quieres participar?</label>
+              <textarea id="v-msg" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">
+              <i class="fa-solid fa-paper-plane"></i> Enviar solicitud
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="community-content" id="comm-register">
+        <div class="volunteer-form">
+          <h3 style="font-family: var(--font-display); font-size: 22px; margin-bottom: 8px;">Regístrate en la comunidad</h3>
+          <p style="color: var(--text-secondary); margin-bottom: 24px; font-size: 14px;">Crea tu cuenta y accede a todos los beneficios de ROVE Project, incluyendo tu Tarjeta Verde.</p>
+          <form onsubmit="handleRegister(event)">
+            <div class="form-group">
+              <label for="r-name">Nombre completo</label>
+              <input type="text" id="r-name" required placeholder="Tu nombre">
+            </div>
+            <div class="form-group">
+              <label for="r-email">Correo electrónico</label>
+              <input type="email" id="r-email" required placeholder="tu@email.com">
+            </div>
+            <div class="form-group">
+              <label for="r-pass">Contraseña</label>
+              <input type="password" id="r-pass" required placeholder="Mínimo 6 caracteres">
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">
+              <i class="fa-solid fa-user-plus"></i> Crear cuenta
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     PAGE: TARJETA VERDE
+     ═══════════════════════════════════════════ -->
+<section class="page" id="page-tarjeta-verde">
+  <div class="inner-hero">
+    <div class="container">
+      <div class="section-label">Tarjeta Verde</div>
+      <h2 class="section-title">Tu llave a la comunidad</h2>
+      <p class="section-subtitle">La Tarjeta Verde es tu identidad dentro de ROVE Project. Acumula puntos, desbloquea niveles, gana insignias y accede a beneficios exclusivos.</p>
+    </div>
+  </div>
+  <div class="section" style="padding-top:0">
+    <div class="container">
+      <div id="tv-logged-out">
+        <div class="tarjeta-layout">
+          <div>
+            <div class="tarjeta-card-preview">
+              <div class="tarjeta-card-3d">
+                <div>
+                  <div class="tv-chip"></div>
+                  <div class="tv-name">ROVE Project</div>
+                  <div class="tv-id">TARJETA VERDE</div>
+                  <div class="tv-level">Nivel 1 &middot; Semilla</div>
+                </div>
+                <div class="tv-bottom">
+                  <div>
+                    <div class="tv-points">0 <span>pts</span></div>
+                    <div style="font-size:11px;opacity:0.6;margin-top:4px;">Miembro desde hoy</div>
+                  </div>
+                  <div class="tv-qr"><i class="fa-solid fa-qrcode"></i></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="tv-login-prompt">
+              <h3>Activa tu Tarjeta Verde</h3>
+              <p>Inicia sesión o regístrate para obtener tu Tarjeta Verde y comenzar a acumular puntos.</p>
+              <div class="login-form">
+                <div class="form-group">
+                  <label for="tv-email">Correo electrónico</label>
+                  <input type="email" id="tv-email" placeholder="tu@email.com">
+                </div>
+                <div class="form-group">
+                  <label for="tv-pass">Contraseña</label>
+                  <input type="password" id="tv-pass" placeholder="Tu contraseña">
+                </div>
+                <button class="btn btn-primary" style="width:100%; justify-content:center;" onclick="loginTV()">
+                  <i class="fa-solid fa-right-to-bracket"></i> Ingresar
+                </button>
+                <p style="text-align:center; margin-top: 12px; font-size: 13px; color: var(--text-muted);">
+                  ¿No tienes cuenta? <a href="#community" style="color: var(--green-600); font-weight: 600;" onclick="navigateTo('community')">Regístrate aquí</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="tv-logged-in" style="display:none;">
+        <div class="tarjeta-layout">
+          <div>
+            <div class="tarjeta-card-preview">
+              <div class="tarjeta-card-3d" id="tvCardLive">
+                <div>
+                  <div class="tv-chip"></div>
+                  <div class="tv-name" id="tvDisplayName">Henry Contreras</div>
+                  <div class="tv-id" id="tvDisplayId">TV-00001</div>
+                  <div class="tv-level" id="tvDisplayLevel">Nivel 1 &middot; Semilla</div>
+                </div>
+                <div class="tv-bottom">
+                  <div>
+                    <div class="tv-points" id="tvDisplayPoints">0 <span>pts</span></div>
+                    <div style="font-size:11px;opacity:0.6;margin-top:4px;" id="tvDisplaySince"></div>
+                  </div>
+                  <div class="tv-qr" id="tvQrCode"><i class="fa-solid fa-qrcode"></i></div>
+                </div>
+              </div>
+              <div style="text-align:center; margin-top: 16px;">
+                <button class="btn btn-outline" onclick="simulateActivity()" style="font-size:13px; padding:10px 20px;">
+                  <i class="fa-solid fa-plus"></i> Simular actividad (+50 pts)
+                </button>
+                <button class="btn btn-outline" onclick="logoutTV()" style="font-size:13px; padding:10px 20px; margin-left:8px;">
+                  <i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión
+                </button>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="tv-benefits">
+              <div class="tv-benefit">
+                <div class="tv-b-icon"><i class="fa-solid fa-qrcode"></i></div>
+                <div>
+                  <h4>Código QR único</h4>
+                  <p>Valida tu participación en actividades escaneando tu código QR personal.</p>
+                </div>
+              </div>
+              <div class="tv-benefit">
+                <div class="tv-b-icon"><i class="fa-solid fa-star"></i></div>
+                <div>
+                  <h4>Sistema de puntos</h4>
+                  <p>Acumula puntos por cada actividad, compra o voluntariado en el que participes.</p>
+                </div>
+              </div>
+              <div class="tv-benefit">
+                <div class="tv-b-icon"><i class="fa-solid fa-award"></i></div>
+                <div>
+                  <h4>Insignias y niveles</h4>
+                  <p>Desbloquea insignias y sube de nivel conforme participas más en la comunidad.</p>
+                </div>
+              </div>
+              <div class="tv-benefit">
+                <div class="tv-b-icon"><i class="fa-solid fa-gift"></i></div>
+                <div>
+                  <h4>Recompensas</h4>
+                  <p>Canjea tus puntos por productos, descuentos y experiencias exclusivas.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 60px;">
+          <h3 style="font-family: var(--font-display); font-size: 24px; margin-bottom: 20px;">Niveles</h3>
+          <div class="levels-strip" id="levelsStrip">
+            <div class="level-card" data-level="1">
+              <div class="level-icon"><i class="fa-solid fa-seedling"></i></div>
+              <h5>Semilla</h5>
+              <p>0 - 200 pts</p>
+            </div>
+            <div class="level-card" data-level="2">
+              <div class="level-icon"><i class="fa-solid fa-tree"></i></div>
+              <h5>Raíz</h5>
+              <p>201 - 500 pts</p>
+            </div>
+            <div class="level-card" data-level="3">
+              <div class="level-icon"><i class="fa-solid fa-leaf"></i></div>
+              <h5>Bosque</h5>
+              <p>501 - 1000 pts</p>
+            </div>
+            <div class="level-card" data-level="4">
+              <div class="level-icon"><i class="fa-solid fa-mountain"></i></div>
+              <h5>Montaña</h5>
+              <p>1001+ pts</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 48px;">
+          <h3 style="font-family: var(--font-display); font-size: 24px; margin-bottom: 20px;">Insignias</h3>
+          <div class="badges-grid" id="badgesGrid">
+            <div class="badge-item" data-badge="primer-evento">
+              <div class="badge-icon"><i class="fa-solid fa-calendar-check"></i></div>
+              <div class="badge-name">Primer Evento</div>
+            </div>
+            <div class="badge-item" data-badge="5-eventos">
+              <div class="badge-icon"><i class="fa-solid fa-calendar-days"></i></div>
+              <div class="badge-name">5 Eventos</div>
+            </div>
+            <div class="badge-item" data-badge="voluntario-estrella">
+              <div class="badge-icon"><i class="fa-solid fa-hand-sparkles"></i></div>
+              <div class="badge-name">Voluntario Estrella</div>
+            </div>
+            <div class="badge-item" data-badge="comprador-verde">
+              <div class="badge-icon"><i class="fa-solid fa-bag-shopping"></i></div>
+              <div class="badge-name">Comprador Verde</div>
+            </div>
+            <div class="badge-item" data-badge="lider">
+              <div class="badge-icon"><i class="fa-solid fa-crown"></i></div>
+              <div class="badge-name">Líder</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 48px;">
+          <h3 style="font-family: var(--font-display); font-size: 24px; margin-bottom: 20px;">Canje de recompensas</h3>
+          <div class="rewards-grid">
+            <div class="reward-card">
+              <div class="reward-card-img"><i class="fa-solid fa-shirt"></i></div>
+              <div class="reward-card-body">
+                <h5>Camiseta ROVE</h5>
+                <div class="reward-cost"><i class="fa-solid fa-star"></i> 150 pts</div>
+              </div>
+            </div>
+            <div class="reward-card">
+              <div class="reward-card-img"><i class="fa-solid fa-ticket"></i></div>
+              <div class="reward-card-body">
+                <h5>Entrada evento VIP</h5>
+                <div class="reward-cost"><i class="fa-solid fa-star"></i> 300 pts</div>
+              </div>
+            </div>
+            <div class="reward-card">
+              <div class="reward-card-img"><i class="fa-solid fa-tree"></i></div>
+              <div class="reward-card-body">
+                <h5>Árbol plantado a tu nombre</h5>
+                <div class="reward-cost"><i class="fa-solid fa-star"></i> 100 pts</div>
+              </div>
+            </div>
+            <div class="reward-card">
+              <div class="reward-card-img"><i class="fa-solid fa-gift"></i></div>
+              <div class="reward-card-body">
+                <h5>Kit ecológico ROVE</h5>
+                <div class="reward-cost"><i class="fa-solid fa-star"></i> 250 pts</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     PAGE: STORE
+     ═══════════════════════════════════════════ -->
+<section class="page" id="page-store">
+  <div class="inner-hero">
+    <div class="container">
+      <div class="section-label">ROVE Store</div>
+      <h2 class="section-title">Productos con propósito</h2>
+      <p class="section-subtitle">Cada producto cuenta una historia y está conectado con la misión de nuestra comunidad. No solo compras: contribuyes.</p>
+    </div>
+  </div>
+  <div class="section" style="padding-top:0">
+    <div class="container">
+      <div class="store-categories">
+        <button class="store-cat active" onclick="filterStore('all', this)">Todos</button>
+        <button class="store-cat" onclick="filterStore('ropa', this)">Ropa</button>
+        <button class="store-cat" onclick="filterStore('accesorios', this)">Accesorios</button>
+        <button class="store-cat" onclick="filterStore('merch', this)">Merchandising</button>
+        <button class="store-cat" onclick="filterStore('solidario', this)">Productos solidarios</button>
+      </div>
+      <div class="store-grid" id="storeGrid"></div>
+      <div style="text-align:center; margin-top: 32px;">
+        <button class="btn btn-outline" onclick="toggleCart()">
+          <i class="fa-solid fa-cart-shopping"></i> Ver carrito (<span id="cartCountTop">0</span>)
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     PAGE: BLOG
+     ═══════════════════════════════════════════ -->
+<section class="page" id="page-blog">
+  <div class="inner-hero">
+    <div class="container">
+      <div class="section-label">Blog / Historias</div>
+      <h2 class="section-title">Historias que inspiran</h2>
+      <p class="section-subtitle">Contenido de valor sobre ciudad, medio ambiente, liderazgo e innovación social. Una sección clave para compartir conocimiento y fortalecer la comunidad.</p>
+    </div>
+  </div>
+  <div class="section" style="padding-top:0">
+    <div class="container">
+      <div class="blog-grid" id="blogGrid"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     PAGE: IMPACT
+     ═══════════════════════════════════════════ -->
+<section class="page" id="page-impact">
+  <div class="inner-hero">
+    <div class="container">
+      <div class="section-label">Impacto</div>
+      <h2 class="section-title">El cambio que construimos juntos</h2>
+      <p class="section-subtitle">Indicadores reales del impacto de nuestra comunidad. Porque lo que no se mide, no se mejora.</p>
+    </div>
+  </div>
+  <div class="section" style="padding-top:0">
+    <div class="container">
+      <div class="impact-dashboard">
+        <div class="impact-stat">
+          <div class="is-icon"><i class="fa-solid fa-tree"></i></div>
+          <div class="is-number" data-count="2500">0</div>
+          <div class="is-label">Árboles plantados</div>
+        </div>
+        <div class="impact-stat">
+          <div class="is-icon"><i class="fa-solid fa-paw"></i></div>
+          <div class="is-number" data-count="340">0</div>
+          <div class="is-label">Animales rescatados</div>
+        </div>
+        <div class="impact-stat">
+          <div class="is-icon"><i class="fa-solid fa-user-group"></i></div>
+          <div class="is-number" data-count="1200">0</div>
+          <div class="is-label">Voluntarios</div>
+        </div>
+        <div class="impact-stat">
+          <div class="is-icon"><i class="fa-solid fa-flag"></i></div>
+          <div class="is-number" data-count="15">0</div>
+          <div class="is-label">Campañas realizadas</div>
+        </div>
+        <div class="impact-stat">
+          <div class="is-icon"><i class="fa-solid fa-heart"></i></div>
+          <div class="is-number" data-count="5000">0</div>
+          <div class="is-label">Personas beneficiadas</div>
+        </div>
+        <div class="impact-stat">
+          <div class="is-icon"><i class="fa-solid fa-handshake"></i></div>
+          <div class="is-number" data-count="25">0</div>
+          <div class="is-label">Empresas aliadas</div>
+        </div>
+        <div class="impact-stat">
+          <div class="is-icon"><i class="fa-solid fa-clock"></i></div>
+          <div class="is-number" data-count="8500">0</div>
+          <div class="is-label">Horas de voluntariado</div>
+        </div>
+        <div class="impact-stat">
+          <div class="is-icon"><i class="fa-solid fa-location-dot"></i></div>
+          <div class="is-number" data-count="12">0</div>
+          <div class="is-label">Comunidades intervenidas</div>
+        </div>
+      </div>
+
+      <div class="impact-visual-bar">
+        <h3 style="font-family: var(--font-display);">Progreso de metas anuales</h3>
+        <div class="ivb-item">
+          <div class="ivb-header"><span>Árboles plantados</span><span>83%</span></div>
+          <div class="ivb-bar"><div class="ivb-fill" style="width:0%" data-width="83%"></div></div>
+        </div>
+        <div class="ivb-item">
+          <div class="ivb-header"><span>Voluntarios registrados</span><span>60%</span></div>
+          <div class="ivb-bar"><div class="ivb-fill" style="width:0%" data-width="60%"></div></div>
+        </div>
+        <div class="ivb-item">
+          <div class="ivb-header"><span>Campañas completadas</span><span>75%</span></div>
+          <div class="ivb-bar"><div class="ivb-fill" style="width:0%" data-width="75%"></div></div>
+        </div>
+        <div class="ivb-item">
+          <div class="ivb-header"><span>Horas de voluntariado</span><span>45%</span></div>
+          <div class="ivb-bar"><div class="ivb-fill" style="width:0%" data-width="45%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     PAGE: CONTACT
+     ═══════════════════════════════════════════ -->
+<section class="page" id="page-contact">
+  <div class="inner-hero">
+    <div class="container">
+      <div class="section-label">Contacto</div>
+      <h2 class="section-title">Hablemos</h2>
+      <p class="section-subtitle">Estamos aquí para escucharte. Contáctanos por cualquiera de nuestros canales.</p>
+    </div>
+  </div>
+  <div class="section" style="padding-top:0">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-form-card" style="text-align:center;">
+          <h3 style="font-family: var(--font-display); margin-bottom: 8px;">Envíanos un mensaje</h3>
+          <p style="color: var(--text-secondary); margin-bottom: 28px; font-size: 15px;">Escríbenos directamente por WhatsApp y te responderemos lo antes posible.</p>
+          <a href="https://wa.me/59172516464" target="_blank" class="btn-whatsapp" style="font-size: 18px; padding: 18px 36px;">
+            <i class="fa-brands fa-whatsapp"></i> Enviar mensaje por WhatsApp
+          </a>
+        </div>
+        <div>
+          <div class="contact-info-list">
+            <div class="contact-info-item">
+              <div class="cii-icon"><i class="fa-brands fa-whatsapp"></i></div>
+              <div>
+                <h5>WhatsApp</h5>
+                <p>+591 72516464</p>
+                <a href="https://wa.me/59172516464" target="_blank" class="btn-whatsapp" style="margin-top:8px;">
+                  <i class="fa-brands fa-whatsapp"></i> Chatear ahora
+                </a>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <div class="cii-icon"><i class="fa-solid fa-envelope"></i></div>
+              <div>
+                <h5>Correo electrónico</h5>
+                <p>contacto@roveproject.org</p>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <div class="cii-icon"><i class="fa-solid fa-location-dot"></i></div>
+              <div>
+                <h5>Ubicación</h5>
+                <p>Ciudad, País</p>
+              </div>
+            </div>
+          </div>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="social-link" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" class="social-link" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" class="social-link" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CART PANEL
+     ═══════════════════════════════════════════ -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-panel" id="cartPanel">
+  <div class="cart-header">
+    <h3 style="font-family: var(--font-display); font-size: 20px;">Tu carrito</h3>
+    <button onclick="toggleCart()" style="background:none; border:none; font-size:20px; color:var(--text-muted); cursor:pointer;">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <p style="text-align:center; color:var(--text-muted); padding:40px 0;">Tu carrito está vacío</p>
+  </div>
+  <div class="cart-footer" id="cartFooter" style="display:none;">
+    <div class="cart-total">
+      <span>Total</span>
+      <span id="cartTotal">$0</span>
+    </div>
+    <button class="btn btn-primary" style="width:100%; justify-content:center;" onclick="showToast('¡Gracias por tu compra! (Demo)', 'success')">
+      <i class="fa-solid fa-lock"></i> Finalizar compra
+    </button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     MODAL
+     ═══════════════════════════════════════════ -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal()">
+  <div class="modal-box" id="modalBox" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     TOAST CONTAINER
+     ═══════════════════════════════════════════ -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo">
+          <div class="nav-logo-icon">R</div>
+          <div>ROVE<span>Project</span></div>
+        </div>
+        <p>Construyendo comunidad para transformar ciudades. Liderado por Henry Contreras.</p>
+      </div>
+      <div>
+        <h5>Plataforma</h5>
+        <a href="#ecosystem" onclick="navigateTo('ecosystem')">Ecosistema</a>
+        <a href="#community" onclick="navigateTo('community')">Comunidad</a>
+        <a href="#tarjeta-verde" onclick="navigateTo('tarjeta-verde')">Tarjeta Verde</a>
+        <a href="#store" onclick="navigateTo('store')">Tienda</a>
+      </div>
+      <div>
+        <h5>Contenido</h5>
+        <a href="#blog" onclick="navigateTo('blog')">Blog</a>
+        <a href="#impact" onclick="navigateTo('impact')">Impacto</a>
+        <a href="#about" onclick="navigateTo('about')">Sobre Henry</a>
+        <a href="#contact" onclick="navigateTo('contact')">Contacto</a>
+      </div>
+      <div>
+        <h5>Conecta</h5>
+        <a href="#">Instagram</a>
+        <a href="#">Facebook</a>
+        <a href="#">YouTube</a>
+        <a href="#">WhatsApp</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 ROVE Project — Henry Contreras. Todos los derechos reservados.</span>
+      <span>Construyendo comunidad para transformar ciudades.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════
+     JAVASCRIPT
+     ═══════════════════════════════════════════ -->
+<script>
+/* ── Router ── */
+const pages = document.querySelectorAll('.page');
+const navLinksAll = document.querySelectorAll('[data-page]');
+
+function navigateTo(pageName) {
+  pages.forEach(p => p.classList.remove('active'));
+  const target = document.getElementById('page-' + pageName);
+  if (target) target.classList.add('active');
+
+  navLinksAll.forEach(a => a.classList.remove('active'));
+  navLinksAll.forEach(a => { if (a.dataset.page === pageName) a.classList.add('active'); });
+
+  window.location.hash = pageName;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  observeFadeUps();
+}
+
+function handleHash() {
+  let hash = window.location.hash.replace('#', '');
+  if (!hash || !document.getElementById('page-' + hash)) hash = 'home';
+  navigateTo(hash);
+}
+
+window.addEventListener('hashchange', handleHash);
+window.addEventListener('DOMContentLoaded', () => {
+  handleHash();
+  initStore();
+  initBlog();
+  initTV();
+  setupScrollObserver();
+});
+
+/* ── Navbar scroll effect ── */
+window.addEventListener('scroll', () => {
+  const navbar = document.getElementById('navbar');
+  navbar.classList.toggle('scrolled', window.scrollY > 10);
+});
+
+/* ── Mobile menu ── */
+function toggleMobileMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+  document.getElementById('navToggle').classList.toggle('active');
+}
+function closeMobileMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.getElementById('navToggle').classList.remove('active');
+}
+
+/* ── Cart ── */
+let cart = JSON.parse(localStorage.getItem('rove_cart') || '[]');
+
+function toggleCart() {
+  document.getElementById('cartPanel').classList.toggle('open');
+  document.getElementById('cartOverlay').classList.toggle('open');
+  renderCart();
+}
+
+function addToCart(id) {
+  const existing = cart.find(i => i.id === id);
+  if (existing) { existing.qty++; }
+  else {
+    const product = products.find(p => p.id === id);
+    if (product) cart.push({ id: id, name: product.name, price: product.price, imgClass: product.imgClass, qty: 1 });
+  }
+  saveCart();
+  showToast('Producto añadido al carrito', 'success');
+}
+
+function removeFromCart(id) { cart = cart.filter(i => i.id !== id); saveCart(); renderCart(); }
+function updateQty(id, delta) {
+  const item = cart.find(i => i.id === id);
+  if (item) { item.qty += delta; if (item.qty <= 0) removeFromCart(id); }
+  saveCart(); renderCart();
+}
+function saveCart() { localStorage.setItem('rove_cart', JSON.stringify(cart)); updateCartCount(); }
+function updateCartCount() {
+  const count = cart.reduce((s,i) => s + i.qty, 0);
+  document.getElementById('cartCountTop').textContent = count;
+  const countEls = document.querySelectorAll('.cart-count');
+  countEls.forEach(el => el.textContent = count);
+}
+
+function renderCart() {
+  const container = document.getElementById('cartItems');
+  const footer = document.getElementById('cartFooter');
+  if (cart.length === 0) {
+    container.innerHTML = '<p style="text-align:center; color:var(--text-muted); padding:40px 0;">Tu carrito está vacío</p>';
+    footer.style.display = 'none';
+    return;
+  }
+  footer.style.display = 'block';
+  let total = 0;
+  container.innerHTML = cart.map(item => {
+    total += item.price * item.qty;
+    return `<div class="cart-item">
+      <div class="cart-item-img ${item.imgClass || 'p1'}"><i class="fa-solid fa-bag-shopping"></i></div>
+      <div class="cart-item-info">
+        <h5>${item.name}</h5>
+        <div class="ci-price">$${item.price.toFixed(2)}</div>
+        <div class="cart-item-qty">
+          <button onclick="updateQty(${item.id},-1)">-</button>
+          <span>${item.qty}</span>
+          <button onclick="updateQty(${item.id},1)">+</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+  document.getElementById('cartTotal').textContent = '$' + total.toFixed(2);
+}
+
+/* ── Products ── */
+const products = [
+  { id:1, name:'Camiseta ROVE Original', cat:'ropa', price:25, imgClass:'p1', story:'Prenda de algodón orgánico. Cada compra apoya un proyecto comunitario.', badge:'Nuevo' },
+  { id:2, name:'Gorra Ruta Verde', cat:'accesorios', price:18, imgClass:'p2', story:'Gorra eco-friendly. Representa tu compromiso con el medio ambiente.', badge:null },
+  { id:3, name:'Pulsera Huellas Music', cat:'accesorios', price:12, imgClass:'p3', story:'Pulsera artesanal hecha por jóvenes del proyecto Huellas Music.', badge:'Solidario' },
+  { id:4, name:'Chaqueta ROVE Community', cat:'ropa', price:45, imgClass:'p4', story:'Chaqueta premium para miembros de la comunidad. Identidad y estilo.', badge:null },
+  { id:5, name:'Kit de Semillas Comunitarias', cat:'solidario', price:10, imgClass:'p5', story:'Kit de semillas nativas. Contribuye a la reforestación de tu ciudad.', badge:'Impacto' },
+  { id:6, name:'Taza ROVE Project', cat:'merch', price:15, imgClass:'p6', story:'Taza cerámica artesanal. Hecha por emprendedores locales aliados.', badge:null },
+];
+
+function filterStore(cat, btn) {
+  document.querySelectorAll('.store-cat').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderStore(cat);
+}
+
+function renderStore(cat = 'all') {
+  const grid = document.getElementById('storeGrid');
+  const filtered = cat === 'all' ? products : products.filter(p => p.cat === cat);
+  grid.innerHTML = filtered.map(p => `
+    <div class="product-card">
+      <div class="product-card-img ${p.imgClass}">
+        <i class="fa-solid fa-bag-shopping"></i>
+        ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ''}
+      </div>
+      <div class="product-card-body">
+        <div class="product-cat">${p.cat}</div>
+        <h4>${p.name}</h4>
+        <p class="product-story">${p.story}</p>
+        <div class="product-price">$${p.price.toFixed(2)}</div>
+        <div class="product-actions">
+          <button class="btn btn-primary" style="flex:1; justify-content:center; font-size:13px; padding:10px 18px;" onclick="addToCart(${p.id})">
+            <i class="fa-solid fa-cart-plus"></i> Añadir
+          </button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function initStore() { renderStore(); updateCartCount(); }
+
+/* ── Blog ── */
+const blogPosts = [
+  { title:'El poder de una comunidad organizada', cat:'Liderazgo', imgBg:'linear-gradient(135deg, #1B5E20, #4CAF50)', icon:'fa-solid fa-people-group', excerpt:'Descubre cómo la organización comunitaria puede transformar realidades y construir ciudades más humanas.', date:'10 Jul 2026', read:'5 min' },
+  { title:'Reforestación urbana: más que plantar árboles', cat:'Medio ambiente', imgBg:'linear-gradient(135deg, #2D6A4F, #40916C)', icon:'fa-solid fa-tree', excerpt:'La reforestación urbana no es solo una acción ecológica. Es un acto de amor por la ciudad y sus habitantes.', date:'3 Jul 2026', read:'7 min' },
+  { title:'Innovación social: el futuro de las ciudades', cat:'Innovación', imgBg:'linear-gradient(135deg, #0D2818, #2E7D32)', icon:'fa-solid fa-lightbulb', excerpt:'La innovación social está redefiniendo cómo resolvemos los problemas urbanos. Te contamos las tendencias clave.', date:'28 Jun 2026', read:'6 min' },
+  { title:'Historias que transforman: El caso de Ruta Verde', cat:'Proyectos comunitarios', imgBg:'linear-gradient(135deg, #8B5E3C, #C4915E)', icon:'fa-solid fa-leaf', excerpt:'Ruta Verde comenzó como una pequeña iniciativa y hoy es un referente de transformación ambiental comunitaria.', date:'20 Jun 2026', read:'8 min' },
+  { title:'Liderazgo con propósito en tiempos de cambio', cat:'Opinión', imgBg:'linear-gradient(135deg, #606C38, #A3B18A)', icon:'fa-solid fa-microphone', excerpt:'Reflexiones sobre lo que significa liderar con propósito cuando todo a nuestro alrededor está cambiando.', date:'15 Jun 2026', read:'4 min' },
+  { title:'La Tarjeta Verde: una nueva forma de participar', cat:'Ciudad', imgBg:'linear-gradient(135deg, #1B4332, #52796F)', icon:'fa-solid fa-credit-card', excerpt:'Te explicamos cómo funciona nuestro sistema de membresía y por qué es el corazón de ROVE Project.', date:'8 Jun 2026', read:'5 min' },
+];
+
+function initBlog() {
+  const grid = document.getElementById('blogGrid');
+  if (!grid) return;
+  grid.innerHTML = blogPosts.map(p => `
+    <div class="blog-card">
+      <div class="blog-card-img" style="background:${p.imgBg};">
+        <i class="${p.icon}"></i>
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-cat">${p.cat}</div>
+        <h4>${p.title}</h4>
+        <p>${p.excerpt}</p>
+        <div class="blog-meta">
+          <span><i class="fa-solid fa-calendar"></i> ${p.date}</span>
+          <span><i class="fa-solid fa-clock"></i> ${p.read} de lectura</span>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+/* ── Community tabs ── */
+function switchCommunityTab(tab) {
+  document.querySelectorAll('.community-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.community-content').forEach(c => c.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById('comm-' + tab).classList.add('active');
+}
+
+/* ── Tarjeta Verde System ── */
+let tvUser = JSON.parse(localStorage.getItem('rove_tv_user') || 'null');
+const LEVELS = [
+  { name:'Semilla', icon:'fa-solid fa-seedling', min:0, max:200 },
+  { name:'Raíz', icon:'fa-solid fa-tree', min:201, max:500 },
+  { name:'Bosque', icon:'fa-solid fa-leaf', min:501, max:1000 },
+  { name:'Montaña', icon:'fa-solid fa-mountain', min:1001, max:Infinity },
+];
+const BADGES = ['primer-evento','5-eventos','voluntario-estrella','comprador-verde','lider'];
+
+function getLevel(points) {
+  for (let i = LEVELS.length - 1; i >= 0; i--) {
+    if (points >= LEVELS[i].min) return i + 1;
+  }
+  return 1;
+}
+
+function initTV() {
+  if (tvUser) {
+    document.getElementById('tv-logged-out').style.display = 'none';
+    document.getElementById('tv-logged-in').style.display = 'block';
+    renderTV();
+  } else {
+    document.getElementById('tv-logged-out').style.display = 'block';
+    document.getElementById('tv-logged-in').style.display = 'none';
+  }
+}
+
+function loginTV() {
+  const email = document.getElementById('tv-email').value.trim();
+  const pass = document.getElementById('tv-pass').value.trim();
+  if (!email || !pass) { showToast('Completa todos los campos', 'error'); return; }
+
+  // Check if user exists in community registrations
+  const communityUsers = JSON.parse(localStorage.getItem('rove_users') || '[]');
+  const existing = communityUsers.find(u => u.email === email);
+  const name = existing ? existing.name : email.split('@')[0];
+
+  tvUser = {
+    name: name,
+    email: email,
+    id: 'TV-' + String(Math.floor(Math.random() * 90000) + 10000),
+    points: 0,
+    badges: [],
+    since: new Date().toISOString().split('T')[0],
+    activities: 0
+  };
+  saveTVUser();
+  initTV();
+  showToast('¡Bienvenido! Tu Tarjeta Verde está activa', 'success');
+}
+
+function logoutTV() {
+  tvUser = null;
+  localStorage.removeItem('rove_tv_user');
+  initTV();
+  showToast('Sesión cerrada', 'success');
+}
+
+function saveTVUser() { localStorage.setItem('rove_tv_user', JSON.stringify(tvUser)); }
+
+function simulateActivity() {
+  if (!tvUser) return;
+  tvUser.points += 50;
+  tvUser.activities++;
+  if (tvUser.activities >= 1 && !tvUser.badges.includes('primer-evento')) tvUser.badges.push('primer-evento');
+  if (tvUser.activities >= 5 && !tvUser.badges.includes('5-eventos')) tvUser.badges.push('5-eventos');
+  if (tvUser.points >= 300 && !tvUser.badges.includes('voluntario-estrella')) tvUser.badges.push('voluntario-estrella');
+  if (tvUser.points >= 500 && !tvUser.badges.includes('lider')) tvUser.badges.push('lider');
+  saveTVUser();
+  renderTV();
+  showToast('+50 puntos añadidos', 'success');
+}
+
+function renderTV() {
+  if (!tvUser) return;
+  const levelIndex = getLevel(tvUser.points);
+  const level = LEVELS[levelIndex - 1];
+
+  document.getElementById('tvDisplayName').textContent = tvUser.name;
+  document.getElementById('tvDisplayId').textContent = tvUser.id;
+  document.getElementById('tvDisplayLevel').textContent = `Nivel ${levelIndex} · ${level.name}`;
+  document.getElementById('tvDisplayPoints').innerHTML = tvUser.points + ' <span>pts</span>';
+  document.getElementById('tvDisplaySince').textContent = 'Miembro desde ' + tvUser.since;
+
+  // Update level cards
+  document.querySelectorAll('.level-card').forEach(card => {
+    card.classList.remove('active');
+    if (parseInt(card.dataset.level) === levelIndex) card.classList.add('active');
+  });
+
+  // Update badges
+  document.querySelectorAll('.badge-item').forEach(badge => {
+    badge.classList.remove('earned');
+    if (tvUser.badges.includes(badge.dataset.badge)) badge.classList.add('earned');
+  });
+
+  // Update QR display with membership info
+  document.getElementById('tvQrCode').innerHTML = '<i class="fa-solid fa-qrcode"></i>';
+}
+
+/* ── Forms ── */
+function handleVolunteer(e) {
+  e.preventDefault();
+  showToast('¡Solicitud enviada! Nos pondremos en contacto contigo.', 'success');
+  e.target.reset();
+}
+
+function handleRegister(e) {
+  e.preventDefault();
+  const name = document.getElementById('r-name').value.trim();
+  const email = document.getElementById('r-email').value.trim();
+  const pass = document.getElementById('r-pass').value.trim();
+  if (!name || !email || !pass) { showToast('Completa todos los campos', 'error'); return; }
+
+  const users = JSON.parse(localStorage.getItem('rove_users') || '[]');
+  if (users.find(u => u.email === email)) { showToast('Este correo ya está registrado', 'error'); return; }
+
+  users.push({ name, email, pass, date: new Date().toISOString() });
+  localStorage.setItem('rove_users', JSON.stringify(users));
+  showToast('¡Cuenta creada! Ahora puedes activar tu Tarjeta Verde.', 'success');
+  e.target.reset();
+}
+
+function handleContact(e) {
+  e.preventDefault();
+  showToast('Mensaje enviado. ¡Gracias por contactarnos!', 'success');
+  e.target.reset();
+}
+
+/* ── Toast ── */
+function showToast(msg, type = 'success') {
+  const container = document.getElementById('toastContainer');
+  const toast = document.createElement('div');
+  toast.className = 'toast ' + type;
+  toast.textContent = msg;
+  container.appendChild(toast);
+  setTimeout(() => toast.remove(), 3500);
+}
+
+/* ── Modal ── */
+function openModal(content) {
+  document.getElementById('modalContent').innerHTML = content;
+  document.getElementById('modalOverlay').classList.add('open');
+}
+function closeModal() { document.getElementById('modalOverlay').classList.remove('open'); }
+
+/* ── Scroll animations ── */
+function setupScrollObserver() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        // Animate counters
+        const counters = entry.target.querySelectorAll('[data-count]');
+        counters.forEach(c => animateCounter(c));
+        // Animate progress bars
+        const bars = entry.target.querySelectorAll('[data-width]');
+        bars.forEach(b => {
+          setTimeout(() => b.style.width = b.dataset.width, 200);
+        });
+      }
+    });
+  }, { threshold: 0.15 });
+
+  observeFadeUps();
+}
+function observeFadeUps() {
+  setTimeout(() => {
+    document.querySelectorAll('.fade-up').forEach(el => {
+      el.classList.add('visible');
+    });
+  }, 100);
+}
+
+function animateCounter(el) {
+  const target = parseInt(el.dataset.count);
+  const duration = 2000;
+  const start = performance.now();
+  const initial = 0;
+  function update(now) {
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const current = Math.floor(initial + (target - initial) * eased);
+    el.textContent = current.toLocaleString();
+    if (progress < 1) requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+}
+
+// Expose functions to window for inline onclick
+window.navigateTo = navigateTo;
+window.toggleCart = toggleCart;
+window.addToCart = addToCart;
+window.removeFromCart = removeFromCart;
+window.updateQty = updateQty;
+window.filterStore = filterStore;
+window.switchCommunityTab = switchCommunityTab;
+window.loginTV = loginTV;
+window.logoutTV = logoutTV;
+window.simulateActivity = simulateActivity;
+window.showToast = showToast;
+window.handleVolunteer = handleVolunteer;
+window.handleRegister = handleRegister;
+window.handleContact = handleContact;
+window.openModal = openModal;
+window.closeModal = closeModal;
+window.toggleMobileMenu = toggleMobileMenu;
+window.closeMobileMenu = closeMobileMenu;
+</script>
+
+<!-- ═══════════════════════════════════════════
+     FLOATING WHATSAPP
+     ═══════════════════════════════════════════ -->
+<a href="https://wa.me/59172516464" target="_blank" class="whatsapp-float" aria-label="Chatear por WhatsApp">
+  <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+</body>
+</html>
