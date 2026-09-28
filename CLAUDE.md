@@ -10,6 +10,13 @@ Es un **sitio estático para GitHub Pages**: sin backend, sin build, sin depende
 
 El brief del cliente está en `Estrategia web ROVE Project.pdf` (no se publica; ver `.gitignore`). Define las 9 secciones, la Tarjeta Verde como "corazón de la plataforma", y requisitos futuros (panel admin, pasarela de pagos, QR reales, Google Analytics, Meta Pixel, SEO). Consúltalo antes de añadir funcionalidades. Filosofía de diseño: cercanía, comunidad, sostenibilidad; **no** debe verse político ni institucional.
 
+### Contenido real vs. placeholder
+Fuentes verificadas (sept. 2026): la página de Facebook de **Ruta Verde** (`facebook.com/profile.php?id=100079543087003`, "Organización para la conservación del medioambiente", WhatsApp 72516464, `almargendelaley@gmail.com`) y la nota de RTP Bolivia del 16/08/2026 sobre el **Proyecto de Ley El Choco** (El Alto). De ahí salen: la cita de Henry, el timeline de "Sobre Henry", las tarjetas Ley El Choco / Campañas sociales, los posts de `blogPosts` (cada uno con `url` a su fuente), contacto y JSON-LD. Nombre completo: Henry Contreras Vásquez. Lema de la tienda: "Rove Project: no solo vestimos… también creemos."
+
+Siguen siendo **placeholders sin verificar**: cifras de impacto (`data-count`), eventos de Comunidad, productos de la tienda, Huellas Music / Podcast / Conferencias / Emprendimientos, y los textos genéricos de la historia de Henry. No inventes datos nuevos presentados como reales.
+
+SEO local: "Ruta Verde Bolivia" en buscadores lo domina una agencia de turismo homónima (rutaverdebolivia.com); acompaña siempre "Ruta Verde" con "Henry Contreras", "El Alto"/"La Paz" o "medioambiente".
+
 ## Comandos
 
 ```bash

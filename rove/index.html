@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ROVE Project | Henry Contreras — Comunidad que transforma ciudades</title>
-<meta name="description" content="ROVE Project, liderado por Henry Contreras: voluntariado, sostenibilidad, emprendimiento y participación ciudadana. Únete a la comunidad y obtén tu Tarjeta Verde.">
+<meta name="description" content="ROVE Project y Ruta Verde, liderados por Henry Contreras en La Paz y El Alto, Bolivia: voluntariado, medioambiente, campañas solidarias y la Ley El Choco. Únete a la comunidad.">
 <meta name="author" content="Henry Contreras">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#1B5E20">
@@ -41,7 +41,9 @@
       "logo": "https://1r0m3r0.github.io/rove-project/assets/apple-touch-icon.png",
       "slogan": "Construyendo comunidad para transformar ciudades",
       "description": "Plataforma de comunidad e impacto social: voluntariado, sostenibilidad, emprendimiento y participación ciudadana.",
-      "email": "contacto@roveproject.org",
+      "email": "almargendelaley@gmail.com",
+      "areaServed": ["La Paz", "El Alto", "Oruro", "Tarija"],
+      "address": { "@type": "PostalAddress", "addressLocality": "El Alto", "addressRegion": "La Paz", "addressCountry": "BO" },
       "telephone": "+59172516464",
       "founder": { "@id": "https://1r0m3r0.github.io/rove-project/#henry" }
     },
@@ -49,9 +51,29 @@
       "@type": "Person",
       "@id": "https://1r0m3r0.github.io/rove-project/#henry",
       "name": "Henry Contreras",
+      "alternateName": "Henry Contreras Vásquez",
       "jobTitle": "Líder comunitario y fundador de ROVE Project",
+      "memberOf": { "@id": "https://1r0m3r0.github.io/rove-project/#rutaverde" },
+      "subjectOf": {
+        "@type": "NewsArticle",
+        "headline": "Impulsan proyecto de Ley El Choco para tenencia responsable de mascotas",
+        "datePublished": "2026-08-16",
+        "publisher": { "@type": "Organization", "name": "RTP Bolivia" },
+        "url": "https://rtpbolivia.com.bo/sociedad/impulsan-proyecto-de-ley-el-choco-para-tenencia-responsable-de-mascotas/"
+      },
       "url": "https://1r0m3r0.github.io/rove-project/#about",
       "worksFor": { "@id": "https://1r0m3r0.github.io/rove-project/#org" }
+    },
+    {
+      "@type": "NGO",
+      "@id": "https://1r0m3r0.github.io/rove-project/#rutaverde",
+      "name": "Ruta Verde",
+      "description": "Organización para la conservación del medioambiente en Bolivia.",
+      "telephone": "+59172516464",
+      "email": "almargendelaley@gmail.com",
+      "areaServed": ["La Paz", "El Alto", "Oruro", "Tarija"],
+      "sameAs": ["https://www.facebook.com/profile.php?id=100079543087003"],
+      "parentOrganization": { "@id": "https://1r0m3r0.github.io/rove-project/#org" }
     },
     {
       "@type": "WebSite",
@@ -440,6 +462,13 @@ ul { list-style: none; }
 .eco-card-img.podcast { background: linear-gradient(135deg, #2D3436, #636E72); }
 .eco-card-img.conf { background: linear-gradient(135deg, #0D2818, #2E7D32); }
 .eco-card-img.emp { background: linear-gradient(135deg, var(--copper), var(--sand-400)); }
+.eco-card-img.choco { background: linear-gradient(135deg, #5D4037, #A1887F); }
+.eco-card-img.camp { background: linear-gradient(135deg, #2E7D32, var(--copper)); }
+.eco-link {
+  display: inline-flex; align-items: center; gap: 6px; margin-top: 12px;
+  font-size: 13px; font-weight: 600; color: var(--green-700);
+}
+.eco-link:hover { color: var(--green-950); text-decoration: underline; }
 .eco-card-body { padding: 24px; }
 .eco-card-body h4 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
 .eco-card-body p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px; }
@@ -717,7 +746,7 @@ ul { list-style: none; }
 .blog-hero { padding: 140px 0 80px; background: var(--sand-50); }
 .blog-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(340px,1fr)); gap: 28px; margin-top: 40px; }
 .blog-card {
-  background: white; border-radius: var(--radius-lg); overflow: hidden;
+  display: block; background: white; border-radius: var(--radius-lg); overflow: hidden;
   border: 1px solid var(--border); transition: var(--transition);
 }
 .blog-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
@@ -1122,8 +1151,8 @@ ul { list-style: none; }
             <div class="about-img-icon"><i class="fa-solid fa-user-tie"></i></div>
           </div>
           <div class="about-quote-box">
-            <p>"No basta con soñar una ciudad mejor. Hay que construirla, juntos, desde la comunidad."</p>
-            <span>— Henry Contreras</span>
+            <p>"Que la naturaleza nos siga enseñando a ser mejores."</p>
+            <span>— Henry Contreras Vásquez, Ruta Verde</span>
           </div>
         </div>
         <div>
@@ -1131,7 +1160,7 @@ ul { list-style: none; }
           <h2 class="section-title">El liderazgo que transforma</h2>
           <div class="about-story">
             <p>Henry Contreras no es solo un líder comunitario. Es un constructor de puentes entre las necesidades reales de la ciudad y las personas dispuestas a transformarla. Su trayectoria comenzó en las calles, escuchando, aprendiendo y actuando.</p>
-            <p>Con más de una década de trabajo comunitario, Henry ha impulsado proyectos ambientales, sociales y culturales que han cambiado la vida de miles de personas. Su visión es clara: <strong>una ciudad se transforma cuando su gente se organiza</strong>.</p>
+            <p>Desde <strong>Ruta Verde</strong>, organización para la conservación del medioambiente en Bolivia, Henry ha impulsado campañas de recolección de ropa de invierno en La Paz, El Alto, Oruro y Tarija, ayuda directa a familias vulnerables y el <strong>Proyecto de Ley El Choco</strong> por la tenencia responsable de animales en El Alto. Su visión es clara: <strong>una ciudad se transforma cuando su gente se organiza</strong>.</p>
             <p>ROVE Project nace como la plataforma que materializa esa visión. No es un proyecto personal: es un ecosistema donde cada persona encuentra su lugar para contribuir, aprender y crecer.</p>
           </div>
         </div>
@@ -1141,37 +1170,37 @@ ul { list-style: none; }
         <div class="section-label">Trayectoria</div>
         <h2 class="section-title" style="margin-bottom:40px">El camino recorrido</h2>
         <div class="timeline-item">
-          <div class="timeline-year">2010</div>
-          <div class="timeline-content">
-            <h4>Primeras acciones comunitarias</h4>
-            <p>Organización de jornadas de limpieza y reforestación en barrios vulnerables.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-year">2015</div>
-          <div class="timeline-content">
-            <h4>Fundación de Ruta Verde</h4>
-            <p>Creación del primer proyecto estructurado de impacto ambiental comunitario.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-year">2018</div>
-          <div class="timeline-content">
-            <h4>Nacimiento de Huellas Music</h4>
-            <p>Proyecto cultural que une música, juventud y transformación social.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
           <div class="timeline-year">2022</div>
           <div class="timeline-content">
-            <h4>Lanzamiento de ROVE Project</h4>
-            <p>Integración de todos los proyectos en una plataforma única de comunidad.</p>
+            <h4>Campaña de ropa de invierno</h4>
+            <p>Ruta Verde recolecta ropa para personas en situación de calle y albergues de niños en La Paz, El Alto, Oruro y Tarija.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2025</div>
+          <div class="timeline-content">
+            <h4>Ely, la niña guerrera</h4>
+            <p>Segunda visita solidaria: más ayuda para Ely y su familia, cuyas gallinas ponedoras ya producen huevos.</p>
           </div>
         </div>
         <div class="timeline-item">
           <div class="timeline-year">2026</div>
           <div class="timeline-content">
-            <h4>Tarjeta Verde y expansión</h4>
+            <h4>Agosto · Proyecto de Ley El Choco</h4>
+            <p>Henry impulsa en El Alto una ley de tenencia responsable de mascotas, con censo de perros y gatos y control sanitario.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2026</div>
+          <div class="timeline-content">
+            <h4>Septiembre · Socialización en el INCOS</h4>
+            <p>Estudiantes y autoridades del Instituto INCOS respaldan con sus firmas el Proyecto de Ley El Choco.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">Pronto</div>
+          <div class="timeline-content">
+            <h4>Tarjeta Verde</h4>
             <p>Sistema de membresía que conecta a la comunidad con beneficios, puntos y participación activa.</p>
           </div>
         </div>
@@ -1229,7 +1258,8 @@ ul { list-style: none; }
           <div class="eco-card-body">
             <span class="eco-tag">Ambiental</span>
             <h4 style="margin-top: 8px;">Ruta Verde</h4>
-            <p>Proyecto de reforestación, limpieza y educación ambiental que transforma espacios urbanos.</p>
+            <p>Organización para la conservación del medioambiente en Bolivia. Campañas solidarias, ayuda a familias y defensa de los animales.</p>
+            <a class="eco-link" href="https://www.facebook.com/profile.php?id=100079543087003" target="_blank" rel="noopener"><i class="fa-brands fa-facebook"></i> Ruta Verde en Facebook</a>
           </div>
         </div>
         <div class="eco-card">
@@ -1262,6 +1292,23 @@ ul { list-style: none; }
             <span class="eco-tag">Desarrollo</span>
             <h4 style="margin-top: 8px;">Emprendimientos</h4>
             <p>Apoyo a emprendedores locales que comparten la visión de una economía con propósito social.</p>
+          </div>
+        </div>
+        <div class="eco-card">
+          <div class="eco-card-img choco"><i class="fa-solid fa-paw"></i></div>
+          <div class="eco-card-body">
+            <span class="eco-tag">Incidencia</span>
+            <h4 style="margin-top: 8px;">Ley El Choco</h4>
+            <p>Proyecto de ley de tenencia responsable de mascotas en El Alto: censo de perros y gatos, control sanitario y bienestar animal.</p>
+            <a class="eco-link" href="https://rtpbolivia.com.bo/sociedad/impulsan-proyecto-de-ley-el-choco-para-tenencia-responsable-de-mascotas/" target="_blank" rel="noopener"><i class="fa-solid fa-newspaper"></i> Nota en RTP Bolivia</a>
+          </div>
+        </div>
+        <div class="eco-card">
+          <div class="eco-card-img camp"><i class="fa-solid fa-hand-holding-heart"></i></div>
+          <div class="eco-card-body">
+            <span class="eco-tag">Solidaridad</span>
+            <h4 style="margin-top: 8px;">Campañas sociales</h4>
+            <p>Recolección de ropa de invierno, Día del Niño y ayuda directa a familias en La Paz, El Alto, Oruro y Tarija.</p>
           </div>
         </div>
       </div>
@@ -1626,7 +1673,7 @@ ul { list-style: none; }
     <div class="container">
       <div class="section-label">ROVE Store</div>
       <h2 class="section-title">Productos con propósito</h2>
-      <p class="section-subtitle">Cada producto cuenta una historia y está conectado con la misión de nuestra comunidad. No solo compras: contribuyes.</p>
+      <p class="section-subtitle">Cada producto cuenta una historia y está conectado con la misión de nuestra comunidad. <strong>Rove Project: no solo vestimos… también creemos.</strong></p>
     </div>
   </div>
   <div class="section" style="padding-top:0">
@@ -1782,23 +1829,21 @@ ul { list-style: none; }
               <div class="cii-icon"><i class="fa-solid fa-envelope"></i></div>
               <div>
                 <h5>Correo electrónico</h5>
-                <p>contacto@roveproject.org</p>
+                <p><a href="mailto:almargendelaley@gmail.com">almargendelaley@gmail.com</a></p>
               </div>
             </div>
             <div class="contact-info-item">
               <div class="cii-icon"><i class="fa-solid fa-location-dot"></i></div>
               <div>
                 <h5>Ubicación</h5>
-                <p>Ciudad, País</p>
+                <p>La Paz y El Alto, Bolivia<br><small>Campañas también en Oruro y Tarija</small></p>
               </div>
             </div>
           </div>
           <div class="social-links">
-            <a href="#" class="social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#" class="social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="#" class="social-link" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
-            <a href="#" class="social-link" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-            <a href="#" class="social-link" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://www.facebook.com/profile.php?id=100079543087003" target="_blank" rel="noopener" class="social-link" aria-label="Ruta Verde en Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://wa.me/59172516464" target="_blank" rel="noopener" class="social-link" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="mailto:almargendelaley@gmail.com" class="social-link" aria-label="Correo electrónico"><i class="fa-solid fa-envelope"></i></a>
           </div>
         </div>
       </div>
@@ -1877,10 +1922,9 @@ ul { list-style: none; }
       </div>
       <div>
         <h5>Conecta</h5>
-        <a href="#">Instagram</a>
-        <a href="#">Facebook</a>
-        <a href="#">YouTube</a>
-        <a href="#">WhatsApp</a>
+        <a href="https://www.facebook.com/profile.php?id=100079543087003" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://wa.me/59172516464" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="mailto:almargendelaley@gmail.com">Correo</a>
       </div>
     </div>
     <div class="footer-bottom">
@@ -1901,15 +1945,15 @@ const navLinksAll = document.querySelectorAll('[data-page]');
 /* Título y descripción por sección (SEO + pestañas del navegador) */
 const SITE_NAME = 'ROVE Project';
 const PAGE_META = {
-  'home':          { title: 'ROVE Project | Henry Contreras — Comunidad que transforma ciudades', desc: 'ROVE Project, liderado por Henry Contreras: voluntariado, sostenibilidad, emprendimiento y participación ciudadana. Únete a la comunidad y obtén tu Tarjeta Verde.' },
+  'home':          { title: 'ROVE Project | Henry Contreras — Comunidad que transforma ciudades', desc: 'ROVE Project y Ruta Verde, liderados por Henry Contreras en La Paz y El Alto, Bolivia: voluntariado, medioambiente, campañas solidarias y la Ley El Choco. Únete a la comunidad.' },
   'about':         { title: 'Sobre Henry Contreras', desc: 'Conoce la historia, trayectoria y visión de Henry Contreras, líder comunitario y fundador de ROVE Project.' },
-  'ecosystem':     { title: 'Ecosistema de proyectos', desc: 'Ruta Verde, Huellas Music, podcast, conferencias y emprendimientos: los proyectos de impacto social que integran ROVE Project.' },
+  'ecosystem':     { title: 'Ecosistema de proyectos', desc: 'Ruta Verde, Ley El Choco, campañas sociales, Huellas Music y más: los proyectos de impacto social de Henry Contreras en Bolivia.' },
   'community':     { title: 'Comunidad y voluntariado', desc: 'Participa en eventos, inscríbete como voluntario y regístrate en la comunidad ROVE Project.' },
   'tarjeta-verde': { title: 'Tarjeta Verde — Membresía', desc: 'La Tarjeta Verde de ROVE Project: suma puntos, sube de nivel, gana insignias y canjea recompensas por participar en tu comunidad.' },
   'store':         { title: 'ROVE Store — Productos con propósito', desc: 'Ropa, accesorios y productos solidarios de ROVE Project. Cada compra apoya un proyecto comunitario.' },
-  'blog':          { title: 'Blog e historias', desc: 'Historias de comunidad, medio ambiente, liderazgo e innovación social de ROVE Project y Henry Contreras.' },
+  'blog':          { title: 'Blog e historias', desc: 'Historias reales de Ruta Verde y ROVE Project: Ley El Choco, Día del Niño, campañas de ropa de invierno y más, en La Paz y El Alto.' },
   'impact':        { title: 'Nuestro impacto', desc: 'Árboles plantados, voluntarios, campañas y personas beneficiadas: los indicadores de impacto de la comunidad ROVE Project.' },
-  'contact':       { title: 'Contacto', desc: 'Escríbenos por WhatsApp, correo o formulario. Hablemos sobre cómo sumarte a ROVE Project.' },
+  'contact':       { title: 'Contacto', desc: 'Contacta a Henry Contreras y Ruta Verde por WhatsApp (+591 72516464), correo o Facebook. La Paz y El Alto, Bolivia.' },
 };
 
 function updatePageMeta(pageName) {
@@ -2069,19 +2113,19 @@ function initStore() { renderStore(); updateCartCount(); }
 
 /* ── Blog ── */
 const blogPosts = [
-  { title:'El poder de una comunidad organizada', cat:'Liderazgo', imgBg:'linear-gradient(135deg, #1B5E20, #4CAF50)', icon:'fa-solid fa-people-group', excerpt:'Descubre cómo la organización comunitaria puede transformar realidades y construir ciudades más humanas.', date:'10 Jul 2026', read:'5 min' },
-  { title:'Reforestación urbana: más que plantar árboles', cat:'Medio ambiente', imgBg:'linear-gradient(135deg, #2D6A4F, #40916C)', icon:'fa-solid fa-tree', excerpt:'La reforestación urbana no es solo una acción ecológica. Es un acto de amor por la ciudad y sus habitantes.', date:'3 Jul 2026', read:'7 min' },
-  { title:'Innovación social: el futuro de las ciudades', cat:'Innovación', imgBg:'linear-gradient(135deg, #0D2818, #2E7D32)', icon:'fa-solid fa-lightbulb', excerpt:'La innovación social está redefiniendo cómo resolvemos los problemas urbanos. Te contamos las tendencias clave.', date:'28 Jun 2026', read:'6 min' },
-  { title:'Historias que transforman: El caso de Ruta Verde', cat:'Proyectos comunitarios', imgBg:'linear-gradient(135deg, #8B5E3C, #C4915E)', icon:'fa-solid fa-leaf', excerpt:'Ruta Verde comenzó como una pequeña iniciativa y hoy es un referente de transformación ambiental comunitaria.', date:'20 Jun 2026', read:'8 min' },
-  { title:'Liderazgo con propósito en tiempos de cambio', cat:'Opinión', imgBg:'linear-gradient(135deg, #606C38, #A3B18A)', icon:'fa-solid fa-microphone', excerpt:'Reflexiones sobre lo que significa liderar con propósito cuando todo a nuestro alrededor está cambiando.', date:'15 Jun 2026', read:'4 min' },
-  { title:'La Tarjeta Verde: una nueva forma de participar', cat:'Ciudad', imgBg:'linear-gradient(135deg, #1B4332, #52796F)', icon:'fa-solid fa-credit-card', excerpt:'Te explicamos cómo funciona nuestro sistema de membresía y por qué es el corazón de ROVE Project.', date:'8 Jun 2026', read:'5 min' },
+  { title:'Ley El Choco: socializamos la propuesta en el INCOS', cat:'Proyectos comunitarios', imgBg:'linear-gradient(135deg, #5D4037, #A1887F)', icon:'fa-solid fa-paw', excerpt:'Estudiantes y autoridades del Instituto INCOS conocieron el Proyecto de Ley El Choco y lo respaldaron con sus firmas. Cuidar a un animal no cambia el mundo, pero cambia su mundo.', date:'10 Sep 2026', read:'2 min', url:'https://www.facebook.com/reel/1093079230284989/' },
+  { title:'Impulsan el Proyecto de Ley El Choco en El Alto', cat:'Ciudad', imgBg:'linear-gradient(135deg, #0D2818, #2E7D32)', icon:'fa-solid fa-newspaper', excerpt:'RTP Bolivia destaca la iniciativa que lidera Henry Contreras junto a activistas: censo de perros y gatos, control sanitario y tenencia responsable.', date:'16 Ago 2026', read:'3 min', url:'https://rtpbolivia.com.bo/sociedad/impulsan-proyecto-de-ley-el-choco-para-tenencia-responsable-de-mascotas/' },
+  { title:'Día del Niño: salimos a entregar amor', cat:'Experiencias', imgBg:'linear-gradient(135deg, #2E7D32, #C4915E)', icon:'fa-solid fa-children', excerpt:'Junto al equipo de Ruta Verde y con el corazón de Rove Project entregamos juguetes, ropa y comida. Esto es solo el comienzo de una marca que quiere construir comunidad.', date:'12 Abr', read:'2 min', url:'https://www.facebook.com/profile.php?id=100079543087003' },
+  { title:'Ely, la niña guerrera, sigue inspirándonos', cat:'Historias', imgBg:'linear-gradient(135deg, #8B5E3C, #C4915E)', icon:'fa-solid fa-heart', excerpt:'En nuestra segunda visita llevamos más ayuda y comprobamos que las gallinas ponedoras ya producen huevos. Cada paso de Ely es un ejemplo de valentía.', date:'3 Ene 2025', read:'2 min', url:'https://www.facebook.com/profile.php?id=100079543087003' },
+  { title:'Un mensaje para la familia de Ruta Verde', cat:'Liderazgo', imgBg:'linear-gradient(135deg, #1B5E20, #4CAF50)', icon:'fa-solid fa-seedling', excerpt:'Henry Contreras cierra el 2024 agradeciendo a quienes sembraron cada idea y cada acción por un futuro más verde: “Que la naturaleza nos siga enseñando a ser mejores”.', date:'Dic 2024', read:'2 min', url:'https://www.facebook.com/profile.php?id=100079543087003' },
+  { title:'Campaña de recolección de ropa de invierno', cat:'Medio ambiente', imgBg:'linear-gradient(135deg, #1B4332, #52796F)', icon:'fa-solid fa-shirt', excerpt:'Abrigos, chaquetas, suéteres y calzado en buen estado para personas en situación de calle y albergues de niños en La Paz, El Alto, Oruro y Tarija.', date:'Invierno 2022', read:'3 min', url:'https://www.facebook.com/profile.php?id=100079543087003' },
 ];
 
 function initBlog() {
   const grid = document.getElementById('blogGrid');
   if (!grid) return;
   grid.innerHTML = blogPosts.map(p => `
-    <div class="blog-card">
+    <a class="blog-card" href="${p.url}" target="_blank" rel="noopener">
       <div class="blog-card-img" style="background:${p.imgBg};">
         <i class="${p.icon}"></i>
       </div>
@@ -2094,7 +2138,7 @@ function initBlog() {
           <span><i class="fa-solid fa-clock"></i> ${p.read} de lectura</span>
         </div>
       </div>
-    </div>
+    </a>
   `).join('');
 }
 
