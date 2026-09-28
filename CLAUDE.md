@@ -47,7 +47,7 @@ Páginas: `home, about, ecosystem, community, tarjeta-verde, store, blog, impact
 - Formularios de voluntariado/contacto solo muestran un toast; no envían nada. El contacto real es WhatsApp (`wa.me/59172516464`, repetido en 3 sitios).
 
 ### SEO
-- URL base asumida: `https://1r0m3r0.github.io/rove-project/`. Aparece en `<head>` (canonical, Open Graph, JSON-LD), `robots.txt`, `sitemap.xml` y `404.html` (que usa rutas absolutas `/rove-project/`). Si cambia el nombre del repo o se usa dominio propio, reemplazarla en todos esos archivos.
+- URL base: `https://1r0m3r0.github.io/PaginaRove/` (repo `1r0m3r0/PaginaRove`). Aparece en `<head>` (canonical, Open Graph, JSON-LD), `robots.txt`, `sitemap.xml` y `404.html` (que usa rutas absolutas `/PaginaRove/`). Si cambia el nombre del repo o se usa dominio propio, reemplazarla en todos esos archivos.
 - `PAGE_META` en el script define `document.title` y la meta description de cada sección; al añadir una página, añade su entrada.
 - Las cifras de impacto se escriben con su valor real en el HTML (`data-count="2500">2500<`) para que los rastreadores las vean; el JS las anima desde 0 al hacerse visibles.
 - Imagen social: `rove/assets/og-image.png` (1200×630). Favicon: `rove/assets/favicon.svg`.
