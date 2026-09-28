@@ -39,6 +39,14 @@ Páginas: `home, about, ecosystem, community, tarjeta-verde, store, blog, impact
 - Tarjeta Verde: `LEVELS` (Semilla/Raíz/Bosque/Montaña por puntos) y `BADGES`; `simulateActivity()` suma 50 pts y otorga insignias. El QR es solo un icono. `loginTV()` no valida contraseña.
 - Formularios de voluntariado/contacto solo muestran un toast; no envían nada. El contacto real es WhatsApp (`wa.me/59172516464`, repetido en 3 sitios).
 
+### SEO
+- URL base asumida: `https://1r0m3r0.github.io/rove-project/`. Aparece en `<head>` (canonical, Open Graph, JSON-LD), `robots.txt`, `sitemap.xml` y `404.html` (que usa rutas absolutas `/rove-project/`). Si cambia el nombre del repo o se usa dominio propio, reemplazarla en todos esos archivos.
+- `PAGE_META` en el script define `document.title` y la meta description de cada sección; al añadir una página, añade su entrada.
+- Las cifras de impacto se escriben con su valor real en el HTML (`data-count="2500">2500<`) para que los rastreadores las vean; el JS las anima desde 0 al hacerse visibles.
+- Imagen social: `rove/assets/og-image.png` (1200×630). Favicon: `rove/assets/favicon.svg`.
+- Limitación estructural: con enrutado por hash, Google indexa **una sola URL**. Posicionar secciones (blog, tienda, proyectos) por separado exige migrar a páginas HTML reales (`about/index.html`, etc.).
+- `robots.txt` solo lo respetan los buscadores en la raíz de un dominio; en `usuario.github.io/repo/` no tiene efecto (el sitemap se envía en Search Console).
+
 ### Restricciones de GitHub Pages
 - Solo archivos estáticos: cualquier backend (auth real, pagos, envío de formularios) requiere un servicio externo (Formspree, Supabase, Stripe Checkout, etc.).
 - Usar rutas **relativas** (el sitio se sirve bajo `https://<usuario>.github.io/<repo>/`), nunca `/ruta` absoluta.
@@ -46,7 +54,6 @@ Páginas: `home, about, ecosystem, community, tarjeta-verde, store, blog, impact
 
 ## Problemas conocidos
 
-- **Contadores y barras de impacto no se animan**: `setupScrollObserver()` crea un `IntersectionObserver` pero nunca llama a `observer.observe(...)`, así que los `data-count` se quedan en "0" y los `data-width` en 0%.
 - `switchCommunityTab()` depende del global implícito `event`.
 - Los datos interpolados en `innerHTML` no se escapan (hoy son datos propios, pero importa si llegan de usuarios o de una API).
 - No hay imágenes reales: todo son degradados CSS + iconos Font Awesome como placeholders.

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://1r0m3r0.github.io/rove-project/sitemap.xml

@@ -10,3 +10,6 @@ desktop.ini
 
 # Claude Code (configuración local)
 .claude/settings.local.json
+
+# Playwright MCP (capturas/logs locales)
+.playwright-mcp/
